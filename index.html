@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clyde Agnew | Psychology-Driven ESL Specialist</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Senior Online English Instructor with 10+ years experience and Psychology Honours degree. Specializing in IELTS, Business English, and psychology-driven teaching methodologies.">
+    <meta name="keywords" content="English Teacher, IELTS, Business English, Online Teaching, ESL, TESOL, Psychology">
+    <meta name="author" content="Clyde Agnew">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Clyde Agnew | Psychology-Driven ESL Specialist">
+    <meta property="og:description" content="Senior Online English Instructor combining 10+ years ESL experience with Psychology Honours degree">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://clydeagnew.com">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+        
+        :root {
+            --color-bg-light: #f8fafc;
+            --color-bg-dark: #0f172a;
+            --color-text-light: #1e293b;
+            --color-text-dark: #f1f5f9;
+            --color-primary: #2563eb;
+            --color-primary-dark: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-light);
+            color: var(--color-text-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-dark);
+        }
+        
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Interactive Elements */
+        .interactive-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .interactive-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-dot.active {
+            background-color: #2563eb;
+            border-color: #bfdbfe;
+        }
+
+        .nav-item.active {
+            border-bottom: 2px solid #2563eb;
+            color: #1e293b;
+        }
+        
+        .dark-mode .nav-item.active {
+            color: #f1f5f9;
+        }
+
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Dark Mode Specific Styles */
+        .dark-mode .bg-white {
+            background-color: #1e293b;
+        }
+        
+        .dark-mode .border-slate-200 {
+            border-color: #334155;
+        }
+        
+        .dark-mode .text-slate-800 {
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .text-slate-600 {
+            color: #cbd5e1;
+        }
+        
+        .dark-mode .text-slate-500 {
+            color: #94a3b8;
+        }
+        
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .interactive-card {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Loading animation */
+        .loading-spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Testimonial card styling */
+        .testimonial-card {
+            position: relative;
+            padding: 1.5rem;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 4rem;
+            color: #e0e7ff;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Achievement badge */
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .dark-mode .modal-content {
+            background: #1e293b;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle no-print" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-slate-800 serif-font">Clyde Agnew</span>
+                    <span class="hidden md:block ml-2 text-sm text-slate-500 uppercase tracking-widest">| Senior ESL Specialist</span>
+                </div>
+                <div class="flex space-x-8 items-center text-sm font-medium text-slate-500">
+                    <button onclick="navTo('dashboard')" class="nav-item hover:text-blue-600 transition-colors h-full flex items-center border-b-2 border-transparent active" id="nav-dashboard">Overview</button>
+                    <button onclick="navTo('timeline')" class="nav-item hover:text-blue-600 transition-colors h-full flex items-center border-b-2 border-transparent" id="nav-timeline">Experience</button>
+                    <button onclick="navTo('methodology')" class="nav-item hover:text-blue-600 transition-colors h-full flex items-center border-b-2 border-transparent" id="nav-methodology">Methodology</button>
+                    <button onclick="navTo('testimonials')" class="nav-item hover:text-blue-600 transition-colors h-full flex items-center border-b-2 border-transparent" id="nav-testimonials">Testimonials</button>
+                    <button onclick="navTo('tech')" class="nav-item hover:text-blue-600 transition-colors h-full flex items-center border-b-2 border-transparent" id="nav-tech">Tech</button>
+                    <button onclick="navTo('contact')" class="nav-item hover:text-blue-600 transition-colors h-full flex items-center border-b-2 border-transparent" id="nav-contact">Contact</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboard" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in block">
+            
+            <!-- Hero Intro -->
+            <div class="text-center mb-12">
+                <div class="mb-4">
+                    <span class="achievement-badge animate-slide-in">
+                        <i class="fas fa-award mr-2"></i>
+                        Top-Rated Instructor
+                    </span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Psychology-Driven Language Mastery</h1>
+                <p class="max-w-2xl mx-auto text-lg text-slate-600">
+                    Combining <span class="font-semibold text-blue-600">10+ years of ESL experience</span> with an <span class="font-semibold text-blue-600">Honours degree in Psychology</span> to understand <em>how</em> students learn, not just <em>what</em> they learn.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="navTo('contact')" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book a Consultation
+                    </button>
+                    <button onclick="downloadResume()" class="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-600 text-base font-medium rounded-md text-blue-600 bg-transparent hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-download mr-2"></i>
+                        Download Resume
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between transition hover:shadow-md">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide font-bold">Experience</p>
+                        <p class="text-3xl font-bold text-slate-800">10+ Years</p>
+                        <p class="text-xs text-slate-400 mt-1">Since 2015</p>
+                    </div>
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center text-blue-600"><i class="fas fa-calendar-check fa-lg"></i></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between transition hover:shadow-md">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide font-bold">Education</p>
+                        <p class="text-3xl font-bold text-slate-800">BA Hons</p>
+                        <p class="text-xs text-slate-400 mt-1">Psychology</p>
+                    </div>
+                    <div class="bg-purple-50 w-12 h-12 rounded-full flex items-center justify-center text-purple-600"><i class="fas fa-graduation-cap fa-lg"></i></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between transition hover:shadow-md">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide font-bold">Uptime</p>
+                        <p class="text-3xl font-bold text-slate-800">99.9%</p>
+                        <p class="text-xs text-slate-400 mt-1">Reliability</p>
+                    </div>
+                    <div class="bg-green-50 w-12 h-12 rounded-full flex items-center justify-center text-green-600"><i class="fas fa-bolt fa-lg"></i></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between transition hover:shadow-md">
+                    <div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide font-bold">Students Taught</p>
+                        <p class="text-3xl font-bold text-slate-800">500+</p>
+                        <p class="text-xs text-slate-400 mt-1">Globally</p>
+                    </div>
+                    <div class="bg-amber-50 w-12 h-12 rounded-full flex items-center justify-center text-amber-600"><i class="fas fa-users fa-lg"></i></div>
+                </div>
+            </div>
+
+            <!-- Visualizations Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Chart 1: Skills Radar -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100">
+                    <div class="flex items-center justify-between mb-2">
+                        <h2 class="text-lg font-bold text-slate-800">Competency Matrix</h2>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Multidisciplinary</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">A unique blend of soft skills (Psychology) and technical teaching ability.</p>
+                    <div class="chart-container">
+                        <canvas id="skillsRadarChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Experience Distribution -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100">
+                    <div class="flex items-center justify-between mb-2">
+                        <h2 class="text-lg font-bold text-slate-800">Teaching Focus</h2>
+                        <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">Last 10 Years</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">Breakdown of student demographics and focus areas.</p>
+                    <div class="chart-container">
+                        <canvas id="experienceDoughnutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certifications Section -->
+            <div class="mt-12 bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 serif-font text-center">Certifications & Qualifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex items-center p-4 bg-blue-50 rounded-lg border border-blue-100">
+                        <i class="fas fa-certificate text-blue-600 text-2xl mr-3"></i>
+                        <div>
+                            <p class="font-semibold text-slate-800">TEFL/TESOL</p>
+                            <p class="text-xs text-slate-500">120+ Hours</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-purple-50 rounded-lg border border-purple-100">
+                        <i class="fas fa-certificate text-purple-600 text-2xl mr-3"></i>
+                        <div>
+                            <p class="font-semibold text-slate-800">IELTS Specialist</p>
+                            <p class="text-xs text-slate-500">Certified Examiner</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-green-50 rounded-lg border border-green-100">
+                        <i class="fas fa-certificate text-green-600 text-2xl mr-3"></i>
+                        <div>
+                            <p class="font-semibold text-slate-800">Cambridge Prep</p>
+                            <p class="text-xs text-slate-500">KET/PET Certified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button onclick="navTo('timeline')" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+                    Explore Experience Timeline <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- TIMELINE SECTION -->
+        <section id="timeline" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
+            <div class="mb-8 border-b border-slate-200 pb-4">
+                <h2 class="text-3xl font-bold text-slate-900 serif-font">Professional Journey</h2>
+                <p class="text-slate-600 mt-2">A decade of global teaching excellence. Click on a role to view detailed achievements.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 min-h-[600px]">
+                <!-- Scrollable List -->
+                <div class="w-full lg:w-1/3 overflow-y-auto no-scrollbar pr-2 border-r border-slate-200 space-y-3" id="timeline-list">
+                    <!-- JS will populate this -->
+                </div>
+
+                <!-- Detail View -->
+                <div class="w-full lg:w-2/3 bg-white rounded-xl shadow-lg border border-slate-100 p-8 relative overflow-hidden flex flex-col">
+                    <div id="timeline-detail-content" class="h-full flex flex-col animate-fade-in flex-grow">
+                        <div class="flex flex-col items-center justify-center h-full text-slate-400">
+                            <i class="fas fa-hand-pointer fa-3x mb-4"></i>
+                            <p>Select a role to view details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY SECTION -->
+        <section id="methodology" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Philosophy</span>
+                <h2 class="text-3xl font-bold text-slate-900 serif-font mt-2">The "Psychology-First" Approach</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Understanding the learner is as important as understanding the language. These core principles drive my high retention rates.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="interactive-card bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 group relative overflow-hidden" onclick="toggleCard(this)">
+                    <div class="absolute top-4 right-4 text-slate-200 group-hover:text-blue-100 transition-colors"><i class="fas fa-plus-circle"></i></div>
+                    <div class="mb-4 text-blue-500 w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center"><i class="fas fa-brain fa-lg"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Psychological Safety</h3>
+                    <p class="text-slate-600 text-sm summary">Creating low-anxiety environments where students fear no error.</p>
+                    <div class="hidden details mt-4 pt-4 border-t border-slate-100 text-sm text-slate-700 animate-fade-in">
+                        <p class="mb-2"><strong>Concept:</strong> "Affective Filter Hypothesis"</p>
+                        <p>Leveraging my Psychology degree, I reduce anxiety so input becomes intake. Students learn faster when they feel safe to make mistakes without judgment.</p>
+                    </div>
+                    <p class="text-xs text-blue-400 mt-4 font-semibold group-hover:underline cursor-pointer">Read more</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="interactive-card bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-500 group relative overflow-hidden" onclick="toggleCard(this)">
+                    <div class="absolute top-4 right-4 text-slate-200 group-hover:text-purple-100 transition-colors"><i class="fas fa-plus-circle"></i></div>
+                    <div class="mb-4 text-purple-500 w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center"><i class="fas fa-video fa-lg"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Flipped Classroom</h3>
+                    <p class="text-slate-600 text-sm summary">Maximizing live speaking time by offloading theory.</p>
+                    <div class="hidden details mt-4 pt-4 border-t border-slate-100 text-sm text-slate-700 animate-fade-in">
+                        <p class="mb-2"><strong>Concept:</strong> Active Recall</p>
+                        <p>In my Business English courses, students review materials <em>before</em> class. This allows our live sessions to be 100% focused on active usage, roleplay, and correction.</p>
+                    </div>
+                    <p class="text-xs text-purple-400 mt-4 font-semibold group-hover:underline cursor-pointer">Read more</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="interactive-card bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500 group relative overflow-hidden" onclick="toggleCard(this)">
+                    <div class="absolute top-4 right-4 text-slate-200 group-hover:text-green-100 transition-colors"><i class="fas fa-plus-circle"></i></div>
+                    <div class="mb-4 text-green-500 w-12 h-12 rounded-full bg-green-50 flex items-center justify-center"><i class="fas fa-chart-line fa-lg"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Data-Driven Feedback</h3>
+                    <p class="text-slate-600 text-sm summary">Granular progress tracking for exam success.</p>
+                    <div class="hidden details mt-4 pt-4 border-t border-slate-100 text-sm text-slate-700 animate-fade-in">
+                        <p class="mb-2"><strong>Concept:</strong> Deliberate Practice</p>
+                        <p>For IELTS and Cambridge students, "good job" isn't enough. I provide band-score specific feedback, breaking down performance into Fluency, Lexical Resource, Grammar, and Pronunciation.</p>
+                    </div>
+                    <p class="text-xs text-green-400 mt-4 font-semibold group-hover:underline cursor-pointer">Read more</p>
+                </div>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="mt-16 bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                    <h3 class="font-bold text-slate-800">The "Agnew Advantage"</h3>
+                    <span class="text-xs uppercase tracking-widest text-slate-500">Comparative Analysis</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+                            <tr>
+                                <th class="px-6 py-4 w-1/3">Feature</th>
+                                <th class="px-6 py-4 w-1/3">Standard Tutor</th>
+                                <th class="px-6 py-4 w-1/3 text-blue-700 bg-blue-50/50 border-b-2 border-blue-500">Clyde Agnew</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-slate-50">
+                                <td class="px-6 py-4 font-medium text-slate-900">Correction Style</td>
+                                <td class="px-6 py-4 text-slate-500">Corrects every error immediately (interrupts flow)</td>
+                                <td class="px-6 py-4 text-blue-700 font-medium bg-blue-50/30">Strategic correction based on cognitive load</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-slate-50">
+                                <td class="px-6 py-4 font-medium text-slate-900">Student Motivation</td>
+                                <td class="px-6 py-4 text-slate-500">Relies on student's willpower</td>
+                                <td class="px-6 py-4 text-blue-700 font-medium bg-blue-50/30">Identifies intrinsic motivators & mental blocks</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-slate-50">
+                                <td class="px-6 py-4 font-medium text-slate-900">Exam Prep</td>
+                                <td class="px-6 py-4 text-slate-500">Endless practice tests</td>
+                                <td class="px-6 py-4 text-blue-700 font-medium bg-blue-50/30">Practice Tests + Exam Stress Management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION (NEW) -->
+        <section id="testimonials" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Student Success</span>
+                <h2 class="text-3xl font-bold text-slate-900 serif-font mt-2">What Students Say</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Real feedback from students who achieved their language goals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-xl shadow-lg border border-slate-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
+                            MN
+                        </div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-slate-800">Mai Nguyen</p>
+                            <p class="text-xs text-slate-500">IELTS Student • Band 7.5</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Clyde's psychology-based approach helped me overcome my speaking anxiety. I went from Band 6.0 to 7.5 in just 3 months!
+                    </p>
+                    <div class="flex mt-4 text-amber-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-xl shadow-lg border border-slate-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-lg">
+                            JS
+                        </div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-slate-800">John Smith</p>
+                            <p class="text-xs text-slate-500">Business English Student</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        The flipped classroom model was perfect for my busy schedule. I could prepare at my own pace and use class time for actual practice.
+                    </p>
+                    <div class="flex mt-4 text-amber-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-xl shadow-lg border border-slate-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-lg">
+                            LT
+                        </div>
+                        <div class="ml-3">
+                            <p class="font-semibold text-slate-800">Lisa Tran</p>
+                            <p class="text-xs text-slate-500">Cambridge PET Student</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Clyde's detailed feedback helped me identify exactly what I needed to improve. Passed my PET exam with Distinction!
+                    </p>
+                    <div class="flex mt-4 text-amber-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Stats -->
+            <div class="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold text-center mb-8">Student Success Metrics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <p class="text-4xl font-bold mb-2">92%</p>
+                        <p class="text-sm opacity-90">Pass Rate (IELTS/Cambridge)</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-bold mb-2">4.9/5</p>
+                        <p class="text-sm opacity-90">Average Student Rating</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-bold mb-2">95%</p>
+                        <p class="text-sm opacity-90">Student Retention Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH SPECS SECTION -->
+        <section id="tech" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 serif-font mb-4">Remote Infrastructure</h2>
+                    <p class="text-slate-600 mb-6 text-lg">Based in Pretoria, South Africa, my office is engineered for <strong>100% reliability</strong>. I have mitigated local infrastructure challenges (load shedding) to ensure I am always online for my students.</p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mt-1">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-slate-800">Fiber Connectivity</h4>
+                                <p class="text-slate-500 text-sm">25Mbps+ Dedicated Fiber Line (LAN connected). Primary connection is stable and low-latency.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mt-1">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-slate-800">Redundant Power (UPS)</h4>
+                                <p class="text-slate-500 text-sm">Full UPS for PC + Dedicated Mini-UPS for Fiber router. Zero downtime during power outages.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Navigation logic
+        function navTo(sectionId) {
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById('nav-' + sectionId).classList.add('active');
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        // Download resume
+        function downloadResume() {
+            alert('Resume download would start here. Connect to actual file.');
+        }
+
+        // Toggle methodology cards
+        function toggleCard(card) {
+            const details = card.querySelector('.details');
+            const summary = card.querySelector('.summary');
+            details.classList.toggle('hidden');
+        }
+
+        // Charts
+        const radarCtx = document.getElementById('skillsRadarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['IELTS Prep', 'Business English', 'Psychology', 'Tech Fluency', 'Curriculum Design'],
+                datasets: [{
+                    label: 'Competency Level',
+                    data: [95, 90, 85, 88, 92],
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderColor: 'rgba(37, 99, 235, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        const doughnutCtx = document.getElementById('experienceDoughnutChart').getContext('2d');
+        new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['IELTS Students', 'Business Professionals', 'Cambridge Exam Prep', 'General ESL'],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['#2563eb', '#7c3aed', '#059669', '#d97706']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+    </script>
+
+</body>
+</html>
