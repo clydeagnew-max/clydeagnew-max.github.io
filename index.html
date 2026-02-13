@@ -129,6 +129,17 @@
             to { opacity: 1; transform: translateX(0); }
         }
         
+        /* Profile Image Animation */
+        .profile-image-container {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
         /* Dark Mode Specific Styles */
         .dark-mode .bg-white {
             background-color: #1e293b;
@@ -274,6 +285,24 @@
         .dark-mode .modal-content {
             background: #1e293b;
         }
+        
+        /* Photo Modal Specific Styles */
+        .photo-modal-content {
+            max-width: 1000px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .photo-modal-image {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            background: #000;
+        }
+        
+        .photo-modal-info {
+            padding: 2rem;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -311,6 +340,13 @@
             
             <!-- Hero Intro -->
             <div class="text-center mb-12">
+                <!-- Professional Profile Photo -->
+                <div class="mb-6 flex justify-center">
+                    <div class="relative">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/92491e7b-a76f-4e9e-95d9-0b3799766c9a" alt="Clyde Agnew - Professional ESL Instructor" class="w-40 h-40 rounded-full object-cover shadow-2xl border-4 border-white ring-4 ring-blue-500/30">
+                        <div class="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
+                    </div>
+                </div>
                 <div class="mb-4">
                     <span class="achievement-badge animate-slide-in">
                         <i class="fas fa-award mr-2"></i>
@@ -330,6 +366,10 @@
                         <i class="fas fa-download mr-2"></i>
                         Download Resume
                     </button>
+                    <a href="https://github.com/clydeagnew-max" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-600 text-base font-medium rounded-md text-slate-700 bg-transparent hover:bg-slate-50 transition-colors">
+                        <i class="fab fa-github mr-2"></i>
+                        GitHub Profile
+                    </a>
                 </div>
             </div>
 
@@ -393,6 +433,29 @@
                     <div class="chart-container">
                         <canvas id="experienceDoughnutChart"></canvas>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Professional Links Section -->
+            <div class="mt-12 bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-xl shadow-lg border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 serif-font text-center">Connect With Me</h2>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <a href="https://github.com/clydeagnew-max" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fab fa-github text-xl mr-3"></i>
+                        <span class="font-semibold">GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/clydeagnew" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fab fa-linkedin text-xl mr-3"></i>
+                        <span class="font-semibold">LinkedIn</span>
+                    </a>
+                    <a href="https://clydeagnew-max.github.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fas fa-globe text-xl mr-3"></i>
+                        <span class="font-semibold">Portfolio</span>
+                    </a>
+                    <a href="mailto:clyde.agnew@gmail.com" class="inline-flex items-center px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fas fa-envelope text-xl mr-3"></i>
+                        <span class="font-semibold">Email</span>
+                    </a>
                 </div>
             </div>
             
@@ -544,6 +607,110 @@
 
         <!-- TESTIMONIALS SECTION (NEW) -->
         <section id="testimonials" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
+            <!-- Hero Image with Overlay -->
+            <div class="relative mb-12 rounded-2xl overflow-hidden shadow-2xl h-96">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2e1cdaf7-bb11-45ef-9a3e-8e510dbdc9c5" alt="Clyde teaching in Vietnam" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent flex items-end">
+                    <div class="p-8 text-white">
+                        <h2 class="text-3xl font-bold serif-font mb-2">Teaching Excellence in Action</h2>
+                        <p class="text-slate-200">Engaging students across cultures and continents</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photo Gallery: Vietnam Teaching Experience -->
+            <div class="mb-16">
+                <div class="text-center mb-8">
+                    <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Teaching Journey</span>
+                    <h2 class="text-3xl font-bold text-slate-900 serif-font mt-2">Vietnam Teaching Experience</h2>
+                    <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Real classroom moments from my time teaching ESL in Vietnam, working with diverse age groups and learning environments.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Photo 1 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="openPhotoModal(0)">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/92491e7b-a76f-4e9e-95d9-0b3799766c9a" alt="Clyde with students in classroom" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p class="text-white text-sm font-medium">Interactive Classroom Activities</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 2 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="openPhotoModal(1)">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4edbaf3c-1cca-46a7-84bf-a5f0f6c5c4c7" alt="Outdoor educational activity" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p class="text-white text-sm font-medium">Experiential Learning Activities</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 3 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="openPhotoModal(2)">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/12b74507-e7d0-461d-96d7-e2e8bbaa0e3e" alt="Cultural field trip" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p class="text-white text-sm font-medium">Cultural Education & Field Trips</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 4 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="openPhotoModal(3)">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/7bd7c15c-c0ae-4e16-be2b-fe01b77963f2" alt="Professional teaching team" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p class="text-white text-sm font-medium">Professional Collaboration</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 5 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="openPhotoModal(4)">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/f265a60b-3e4b-490d-934b-b18ab79bb1fc" alt="Small group instruction" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p class="text-white text-sm font-medium">Personalized Small Group Instruction</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 6 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="openPhotoModal(5)">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5d78b5ec-f8e7-41bc-becd-9f68e43a7d8e" alt="Graduation ceremony" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p class="text-white text-sm font-medium">Student Achievement Celebration</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Key Highlights from Vietnam Experience -->
+                <div class="mt-12 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center serif-font">Vietnam Teaching Highlights</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-users fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 mb-1">Diverse Age Groups</h4>
+                                <p class="text-sm text-slate-600">Successfully taught students from young learners to adult professionals across multiple educational settings</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-globe-asia fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 mb-1">Cultural Adaptation</h4>
+                                <p class="text-sm text-slate-600">Integrated Vietnamese cultural context into lessons, creating relevant and engaging learning experiences</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white mr-4">
+                                <i class="fas fa-chalkboard-teacher fa-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 mb-1">Innovative Methods</h4>
+                                <p class="text-sm text-slate-600">Blended traditional and experiential learning with outdoor activities and cultural field trips</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="text-center mb-12">
                 <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Student Success</span>
                 <h2 class="text-3xl font-bold text-slate-900 serif-font mt-2">What Students Say</h2>
@@ -673,6 +840,48 @@
             </div>
         </section>
 
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 serif-font mb-4">Get In Touch</h2>
+                <p class="text-slate-600">Let's discuss how I can help you achieve your English language goals.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+                <div class="space-y-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-4">
+                            <i class="fas fa-envelope fa-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 uppercase tracking-wide">Email</p>
+                            <a href="mailto:clyde.agnew@gmail.com" class="text-lg font-semibold text-blue-600 hover:underline">clyde.agnew@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 uppercase tracking-wide">LinkedIn</p>
+                            <a href="https://linkedin.com/in/clydeagnew" target="_blank" class="text-lg font-semibold text-blue-600 hover:underline">linkedin.com/in/clydeagnew</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 mr-4">
+                            <i class="fab fa-github fa-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 uppercase tracking-wide">GitHub</p>
+                            <a href="https://github.com/clydeagnew-max" target="_blank" class="text-lg font-semibold text-blue-600 hover:underline">github.com/clydeagnew-max</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <script>
@@ -702,6 +911,11 @@
             const details = card.querySelector('.details');
             const summary = card.querySelector('.summary');
             details.classList.toggle('hidden');
+        }
+
+        // Photo modal
+        function openPhotoModal(photoIndex) {
+            alert('Photo modal for image ' + photoIndex + ' would open here');
         }
 
         // Charts
