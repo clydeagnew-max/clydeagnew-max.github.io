@@ -303,6 +303,21 @@
         .photo-modal-info {
             padding: 2rem;
         }
+        
+        /* Timeline item styles */
+        .timeline-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(4px);
+        }
+        
+        .timeline-item.selected {
+            background-color: #eff6ff;
+            border-color: #2563eb;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -605,7 +620,7 @@
             </div>
         </section>
 
-        <!-- TESTIMONIALS SECTION (NEW) -->
+        <!-- TESTIMONIALS SECTION -->
         <section id="testimonials" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
             <!-- Hero Image with Overlay -->
             <div class="relative mb-12 rounded-2xl overflow-hidden shadow-2xl h-96">
@@ -885,12 +900,187 @@
     </main>
 
     <script>
+        // Timeline data
+        const timelineData = [
+            {
+                id: 1,
+                year: '2023-Present',
+                title: 'Senior English Instructor',
+                company: 'Freelance / Remote',
+                location: 'Pretoria, South Africa',
+                type: 'Remote',
+                icon: 'fa-laptop-house',
+                color: 'blue',
+                achievements: [
+                    'Maintained 99.9% uptime with professional remote infrastructure',
+                    'Specialized in IELTS preparation with 92% student pass rate',
+                    'Developed custom curriculum for Business English clients',
+                    'Integrated psychology-driven teaching methodologies'
+                ],
+                skills: ['IELTS', 'Business English', 'Remote Teaching', 'Curriculum Design']
+            },
+            {
+                id: 2,
+                year: '2019-2023',
+                title: 'Online English Instructor',
+                company: 'Multiple Platforms (Cambly, Preply, iTalki)',
+                location: 'Remote',
+                type: 'Contract',
+                icon: 'fa-video',
+                color: 'purple',
+                achievements: [
+                    'Taught 500+ students from 30+ countries',
+                    'Maintained 4.9/5 average rating across all platforms',
+                    'Specialized in conversational English and exam preparation',
+                    '95% student retention rate'
+                ],
+                skills: ['Conversational English', 'IELTS', 'TOEFL', 'Online Platforms']
+            },
+            {
+                id: 3,
+                year: '2017-2019',
+                title: 'ESL Teacher',
+                company: 'VinSchool',
+                location: 'Hanoi, Vietnam',
+                type: 'Full-time',
+                icon: 'fa-chalkboard-teacher',
+                color: 'green',
+                achievements: [
+                    'Taught English to students aged 6-18 years',
+                    'Developed engaging lesson plans incorporating cultural elements',
+                    'Organized educational field trips and experiential learning activities',
+                    'Collaborated with international teaching team',
+                    'Received "Outstanding Teacher" award in 2018'
+                ],
+                skills: ['Young Learners', 'Classroom Management', 'Cultural Adaptation', 'Curriculum Development']
+            },
+            {
+                id: 4,
+                year: '2015-2017',
+                title: 'English Language Teacher',
+                company: 'Various Language Centers',
+                location: 'Ho Chi Minh City, Vietnam',
+                type: 'Full-time',
+                icon: 'fa-school',
+                color: 'amber',
+                achievements: [
+                    'Taught general English and Cambridge exam preparation (KET/PET)',
+                    'Conducted small group and one-on-one sessions',
+                    'Developed supplementary materials for exam preparation',
+                    'Achieved 88% student pass rate for Cambridge exams'
+                ],
+                skills: ['Cambridge Exams', 'General English', 'Small Groups', 'Exam Preparation']
+            }
+        ];
+
+        // Populate timeline list
+        function populateTimeline() {
+            const timelineList = document.getElementById('timeline-list');
+            timelineData.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `timeline-item bg-white p-4 rounded-lg border-2 border-slate-200 hover:border-${item.color}-500 transition-all`;
+                itemDiv.dataset.id = item.id;
+                itemDiv.onclick = () => showTimelineDetail(item.id);
+                
+                itemDiv.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-${item.color}-100 flex items-center justify-center text-${item.color}-600 mr-3">
+                            <i class="fas ${item.icon}"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs text-slate-500 font-semibold">${item.year}</p>
+                            <h4 class="text-sm font-bold text-slate-800 truncate">${item.title}</h4>
+                            <p class="text-xs text-slate-600 truncate">${item.company}</p>
+                        </div>
+                    </div>
+                `;
+                
+                timelineList.appendChild(itemDiv);
+                
+                // Auto-select first item
+                if (index === 0) {
+                    setTimeout(() => showTimelineDetail(item.id), 100);
+                }
+            });
+        }
+
+        // Show timeline detail
+        function showTimelineDetail(id) {
+            const item = timelineData.find(d => d.id === id);
+            if (!item) return;
+            
+            // Update selection
+            document.querySelectorAll('.timeline-item').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.querySelector(`.timeline-item[data-id="${id}"]`).classList.add('selected');
+            
+            // Update detail view
+            const detailContent = document.getElementById('timeline-detail-content');
+            detailContent.innerHTML = `
+                <div class="animate-fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-${item.color}-100 flex items-center justify-center text-${item.color}-600 mr-4">
+                            <i class="fas ${item.icon} fa-2x"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 serif-font">${item.title}</h3>
+                            <p class="text-slate-600">${item.company}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="bg-slate-50 p-3 rounded-lg">
+                            <p class="text-xs text-slate-500 uppercase tracking-wide">Period</p>
+                            <p class="font-semibold text-slate-800">${item.year}</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-lg">
+                            <p class="text-xs text-slate-500 uppercase tracking-wide">Location</p>
+                            <p class="font-semibold text-slate-800">${item.location}</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-lg">
+                            <p class="text-xs text-slate-500 uppercase tracking-wide">Type</p>
+                            <p class="font-semibold text-slate-800">${item.type}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-slate-800 mb-3">Key Achievements</h4>
+                        <ul class="space-y-2">
+                            ${item.achievements.map(ach => `
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-${item.color}-500 mr-2 mt-1"></i>
+                                    <span class="text-slate-600 text-sm">${ach}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-3">Skills & Focus Areas</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${item.skills.map(skill => `
+                                <span class="px-3 py-1 bg-${item.color}-50 text-${item.color}-700 rounded-full text-xs font-semibold border border-${item.color}-200">
+                                    ${skill}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // Navigation logic
         function navTo(sectionId) {
             document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
             document.getElementById(sectionId).classList.remove('hidden');
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             document.getElementById('nav-' + sectionId).classList.add('active');
+            
+            // If navigating to timeline, populate it
+            if (sectionId === 'timeline' && document.getElementById('timeline-list').children.length === 0) {
+                populateTimeline();
+            }
         }
 
         // Theme toggle
@@ -909,7 +1099,6 @@
         // Toggle methodology cards
         function toggleCard(card) {
             const details = card.querySelector('.details');
-            const summary = card.querySelector('.summary');
             details.classList.toggle('hidden');
         }
 
