@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clyde Agnew | Knight Scholars - Psychology-Driven ESL & IELTS Specialist</title>
+    <title>Clyde Agnew | knight School - Psychology-Driven ESL & IELTS Specialist</title>
     <meta name="description" content="Senior ESL Specialist with 10+ years experience. Combining Psychology with English teaching for IELTS, Cambridge, and Business English success.">
-    <meta name="keywords" content="ESL, IELTS Tutor, Business English, Psychology of Learning, Clyde Agnew, Knight Scholars">
+    <meta name="keywords" content="ESL, IELTS Tutor, Business English, Psychology of Learning, Clyde Agnew, knight School">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -31,93 +31,392 @@
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center; }
         .modal.active { display: flex; }
         .photo-modal-image { max-width: 90%; max-height: 80vh; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); }
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: #1e293b; letter-spacing: -0.5px; }
+        .logo-text span { color: #2563eb; }
+        .dark-mode .logo-text { color: #f1f5f9; }
+        .gallery-placeholder { background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; color: #4338ca; }
+        .dark-mode .gallery-placeholder { background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%); color: #a5b4fc; }
+        .method-diagram { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 16px; padding: 2rem; margin: 1.5rem auto; max-width: 500px; }
+        .dark-mode .method-diagram { background: linear-gradient(135deg, #1e3a5f 0%, #1e2a4a 100%); }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
-    <button class="theme-toggle no-print" onclick="toggleTheme()" aria-label="Toggle dark mode"><i class="fas fa-moon" id="theme-icon"></i></button>
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000052830.png" alt="Knight Scholars" class="h-10">
-                    <span class="text-xl font-bold text-slate-800 serif-font hidden md:block">Clyde Agnew</span>
-                </div>
-                <div class="flex space-x-6 text-sm font-semibold text-slate-500">
-                    <button onclick="navTo('dashboard')" class="nav-item active" id="nav-dashboard">Home</button>
-                    <button onclick="navTo('methodology')" class="nav-item" id="nav-methodology">Method</button>
-                    <button onclick="navTo('timeline')" class="nav-item" id="nav-timeline">Experience</button>
-                    <button onclick="navTo('results')" class="nav-item" id="nav-results">Results</button>
-                    <button onclick="navTo('contact')" class="nav-item" id="nav-contact">Contact</button>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <div id="photoModal" class="modal" onclick="closeModal()">
+        <img id="modalImg" class="photo-modal-image" src="" alt="Teaching photo">
+    </div>
+
+    <div class="max-w-lg mx-auto px-4 min-h-screen">
+        <!-- NAV -->
+        <nav class="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm border-b border-slate-100 py-3 mb-4">
+            <div class="flex items-center justify-between">
+                <div class="logo-text">knight <span>School</span></div>
+                <div class="flex gap-1">
+                    <button id="nav-dashboard" class="nav-item active text-sm font-medium px-3 py-1 rounded hover:bg-slate-100 transition-colors" onclick="navTo('dashboard')">Home</button>
+                    <button id="nav-methodology" class="nav-item text-sm font-medium px-3 py-1 rounded hover:bg-slate-100 transition-colors" onclick="navTo('methodology')">Method</button>
+                    <button id="nav-timeline" class="nav-item text-sm font-medium px-3 py-1 rounded hover:bg-slate-100 transition-colors" onclick="navTo('timeline')">Experience</button>
+                    <button id="nav-results" class="nav-item text-sm font-medium px-3 py-1 rounded hover:bg-slate-100 transition-colors" onclick="navTo('results')">Results</button>
+                    <button id="nav-contact" class="nav-item text-sm font-medium px-3 py-1 rounded hover:bg-slate-100 transition-colors" onclick="navTo('contact')">Contact</button>
                 </div>
             </div>
-        </div>
-    </nav>
-    <main class="flex-grow">
-        <section id="dashboard" class="py-12 px-4 max-w-7xl mx-auto animate-fade-in block">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                <div class="text-left">
-                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">BA Hons Psychology</span>
-                    <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mt-6 mb-6 leading-tight">Mastering Language Through Cognitive Science</h1>
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">Hi, I'm Clyde. With an Honours in Psychology and over a decade of global teaching experience, I help professionals and students break through plateaus by focusing on <em>how</em> the brain acquires language.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="mailto:clyde.agnew@gmail.com?subject=Request for CV - Clyde Agnew" class="px-8 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition shadow-lg">Request Full CV</a>
-                        <button onclick="navTo('methodology')" class="px-8 py-3 border-2 border-slate-200 text-slate-700 rounded-lg font-bold hover:bg-slate-50 transition">Explore My Method</button>
+        </nav>
+
+        <main>
+            <!-- HOME SECTION -->
+            <section id="dashboard" class="animate-fade-in pb-8">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full uppercase tracking-wide">BA Hons Psychology</span>
+                </div>
+                <h1 class="text-3xl font-bold serif-font mb-4 leading-tight">Mastering Language Through Cognitive Science</h1>
+                <p class="text-slate-600 mb-6 leading-relaxed">Hi, I'm Clyde. With an Honours in Psychology and over a decade of global teaching experience, I help professionals and students break through plateaus by focusing on <em>how</em> the brain acquires language.</p>
+                <div class="flex gap-3 mb-8">
+                    <a href="mailto:clyde.agnew@gmail.com?subject=Request for CV - Clyde Agnew" class="px-5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors">Request Full CV</a>
+                    <button onclick="navTo('methodology')" class="px-5 py-2.5 border-2 border-slate-300 text-slate-700 rounded-lg font-semibold text-sm hover:border-blue-500 hover:text-blue-600 transition-colors">Explore My Method</button>
+                </div>
+
+                <!-- Profile Avatar -->
+                <div class="profile-image-container flex justify-center mb-8">
+                    <div class="w-48 h-48 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-200 flex flex-col items-center justify-center shadow-lg">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="30" r="20" fill="#2563eb" opacity="0.8"/>
+                            <ellipse cx="40" cy="70" rx="28" ry="18" fill="#2563eb" opacity="0.6"/>
+                        </svg>
+                        <p class="text-blue-800 font-semibold text-sm mt-2">Clyde Agnew</p>
                     </div>
                 </div>
-                <div class="relative flex justify-center">
-                    <div class="profile-image-container">
-                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/generatedimage1740081223297.png" alt="Clyde Agnew" class="w-64 h-64 md:w-80 md:h-80 rounded-2xl shadow-2xl object-cover border-4 border-white grayscale hover:grayscale-0 transition duration-500">
-                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 hidden md:block text-center"><p class="text-blue-600 font-bold text-xl">10+ Years</p><p class="text-slate-500 text-xs uppercase tracking-widest font-bold">Experience</p></div>
+
+                <div class="bg-blue-600 text-white rounded-xl p-4 mb-6 text-center">
+                    <p class="text-3xl font-bold">10+ Years</p>
+                    <p class="text-blue-200 text-sm">Experience</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center p-4 bg-blue-50 rounded-xl">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-university text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">BA Hons Psychology</p>
+                            <p class="text-xs text-slate-500">Nelson Mandela University</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-purple-50 rounded-xl">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-certificate text-purple-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">IELTS Readiness Diploma</p>
+                            <p class="text-xs text-slate-500">Upskillist Certified</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-green-50 rounded-xl">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-robot text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">AI for Education</p>
+                            <p class="text-xs text-slate-500">Certified Specialist</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 flex items-center"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4"><i class="fas fa-university fa-lg"></i></div><div><h4 class="font-bold text-slate-800">BA Hons Psychology</h4><p class="text-xs text-slate-500">Nelson Mandela University</p></div></div>
-                <div class="bg-purple-50 p-6 rounded-xl border border-purple-100 flex items-center"><div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-4"><i class="fas fa-certificate fa-lg"></i></div><div><h4 class="font-bold text-slate-800">IELTS Readiness Diploma</h4><p class="text-xs text-slate-500">Upskillist Certified</p></div></div>
-                <div class="bg-green-50 p-6 rounded-xl border border-green-100 flex items-center"><div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4"><i class="fas fa-robot fa-lg"></i></div><div><h4 class="font-bold text-slate-800">AI for Education</h4><p class="text-xs text-slate-500">Certified Specialist</p></div></div>
-            </div>
-        </section>
-        <section id="methodology" class="py-20 bg-slate-50 hidden">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Cognitive-Simplification Pathway</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto mb-12">Breaking the Intermediate Plateau using Cognitive Load Theory and the Affective Filter Hypothesis.</p>
-                <div class="mb-16 flex justify-center"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000049304.png" alt="The Clyde Method Diagram" class="max-w-full lg:max-w-4xl rounded-2xl shadow-xl border border-slate-200"></div>
-                <div class="grid md:grid-cols-3 gap-8 text-left">
-                    <div class="p-8 bg-white rounded-2xl border-t-4 border-blue-600 shadow-sm"><i class="fas fa-brain text-3xl text-blue-600 mb-6"></i><h3 class="font-bold text-xl mb-4">Affective Filter Control</h3><p class="text-slate-600 text-sm">Managing speaking anxiety through psychological safety protocols. We lower the pressure to increase the fluency.</p></div>
-                    <div class="p-8 bg-white rounded-2xl border-t-4 border-purple-600 shadow-sm"><i class="fas fa-film text-3xl text-purple-600 mb-6"></i><h3 class="font-bold text-xl mb-4">Dubbing Mastery</h3><p class="text-slate-600 text-sm">Utilizing cognitive mimicry to build muscle memory for native-level prosody and professional intonation.</p></div>
-                    <div class="p-8 bg-white rounded-2xl border-t-4 border-green-600 shadow-sm"><i class="fas fa-chart-line text-3xl text-green-600 mb-6"></i><h3 class="font-bold text-xl mb-4">Reflective Practice</h3><p class="text-slate-600 text-sm">Moving beyond accuracy to nuance. Identifying the behavioral triggers behind linguistic choices.</p></div>
+            </section>
+
+            <!-- METHOD SECTION -->
+            <section id="methodology" class="hidden animate-fade-in pb-8">
+                <h2 class="text-2xl font-bold serif-font mb-2">The Cognitive-Simplification Pathway</h2>
+                <p class="text-slate-500 mb-6">Breaking the Intermediate Plateau using Cognitive Load Theory and the Affective Filter Hypothesis.</p>
+
+                <!-- Method Diagram -->
+                <div class="method-diagram text-center mb-6">
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="w-full max-w-xs bg-blue-600 text-white rounded-xl p-3">
+                            <i class="fas fa-brain mr-2"></i><span class="font-bold">Cognitive Load Theory</span>
+                        </div>
+                        <div class="text-blue-400 text-2xl">&#8595;</div>
+                        <div class="w-full max-w-xs bg-indigo-500 text-white rounded-xl p-3">
+                            <i class="fas fa-shield-alt mr-2"></i><span class="font-bold">Affective Filter Control</span>
+                        </div>
+                        <div class="text-blue-400 text-2xl">&#8595;</div>
+                        <div class="w-full max-w-xs bg-purple-600 text-white rounded-xl p-3">
+                            <i class="fas fa-comments mr-2"></i><span class="font-bold">Fluent Communication</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 italic">The knight School Method Pathway</p>
                 </div>
+
+                <div class="space-y-4">
+                    <div class="interactive-card p-5 rounded-xl border-2 border-blue-200 bg-blue-50">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+                            <i class="fas fa-shield-alt text-blue-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Affective Filter Control</h3>
+                        <p class="text-slate-600 text-sm">Managing speaking anxiety through psychological safety protocols. We lower the pressure to increase the fluency.</p>
+                    </div>
+                    <div class="interactive-card p-5 rounded-xl border-2 border-purple-200 bg-purple-50">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mb-3">
+                            <i class="fas fa-film text-purple-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Dubbing Mastery</h3>
+                        <p class="text-slate-600 text-sm">Utilizing cognitive mimicry to build muscle memory for native-level prosody and professional intonation.</p>
+                    </div>
+                    <div class="interactive-card p-5 rounded-xl border-2 border-green-200 bg-green-50">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mb-3">
+                            <i class="fas fa-chart-line text-green-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Reflective Practice</h3>
+                        <p class="text-slate-600 text-sm">Moving beyond accuracy to nuance. Identifying the behavioral triggers behind linguistic choices.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIENCE SECTION -->
+            <section id="timeline" class="hidden animate-fade-in pb-8">
+                <h2 class="text-2xl font-bold serif-font mb-2">Professional Journey</h2>
+                <p class="text-slate-500 mb-6">A decade of global teaching excellence. Click on a role to view details.</p>
+                <div id="timeline-list" class="space-y-3 mb-6"></div>
+                <div id="timeline-detail" class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                    <p class="text-slate-500 text-center text-sm" id="timeline-detail-content">Select a role to view details</p>
+                </div>
+
+                <!-- IELTS Masterclass Banner -->
+                <div class="mt-8 rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 text-white p-6">
+                    <p class="text-xs font-semibold text-blue-300 uppercase mb-1">Clyde Agnew IELTS Masterclass</p>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-blue-500 text-white text-xs px-2 py-0.5 rounded">knight School</span>
+                        <span class="text-blue-300 text-xs">Present</span>
+                    </div>
+                    <h3 class="text-xl font-bold serif-font mb-3">The Psychology of the IELTS Band 7.5</h3>
+                    <p class="text-slate-300 text-sm mb-4">In this session, I break down the Cognitive Load Theory—why most students freeze during the Speaking exam and how to hack your brain to stay fluent under pressure.</p>
+                    <ul class="space-y-2 mb-5">
+                        <li class="flex items-start text-sm text-slate-200"><i class="fas fa-check-circle text-blue-400 mr-2 mt-0.5"></i>Managing the Affective Filter (Anxiety Control)</li>
+                        <li class="flex items-start text-sm text-slate-200"><i class="fas fa-check-circle text-blue-400 mr-2 mt-0.5"></i>Lexical Resource vs. Cognitive Retrieval</li>
+                        <li class="flex items-start text-sm text-slate-200"><i class="fas fa-check-circle text-blue-400 mr-2 mt-0.5"></i>Native-Level Fluency Strategy</li>
+                    </ul>
+                    <a href="mailto:clyde.agnew@gmail.com?subject=Book a Diagnostic Call" class="inline-block px-5 py-2.5 bg-blue-500 text-white rounded-lg font-semibold text-sm hover:bg-blue-400 transition-colors">Book a Diagnostic Call</a>
+                </div>
+
+                <!-- IELTS Band Estimator -->
+                <div class="mt-8 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <h3 class="text-xl font-bold serif-font mb-2">IELTS Band Estimator</h3>
+                    <p class="text-slate-500 text-sm mb-5">Enter your current practice scores to calculate your overall Band Score.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Listening (0-9)</label>
+                            <input type="number" id="listening" min="0" max="9" step="0.5" value="6.0" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Reading (0-9)</label>
+                            <input type="number" id="reading" min="0" max="9" step="0.5" value="6.0" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Writing (0-9)</label>
+                            <input type="number" id="writing" min="0" max="9" step="0.5" value="5.5" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Speaking (0-9)</label>
+                            <input type="number" id="speaking" min="0" max="9" step="0.5" value="6.0" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                    </div>
+                    <div class="mt-5 p-4 bg-blue-50 rounded-xl text-center">
+                        <p class="text-xs text-slate-500 uppercase font-semibold mb-1">Estimated Overall Band</p>
+                        <p class="text-5xl font-bold text-blue-600" id="overall-band">6.0</p>
+                        <p class="text-slate-600 text-sm mt-1" id="band-description">Competent User</p>
+                        <button onclick="navTo('contact')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors">Reach Band 7.5</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESULTS SECTION -->
+            <section id="results" class="hidden animate-fade-in pb-8">
+                <h2 class="text-2xl font-bold serif-font mb-6">Professional Case Studies</h2>
+
+                <div class="space-y-4 mb-8">
+                    <div class="interactive-card bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                        <p class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-1">Engineering Operations | Istoria</p>
+                        <h3 class="text-lg font-bold serif-font mb-2">B2 to C1 Transition</h3>
+                        <p class="text-slate-600 text-sm">Focus on ERP frameworks and project lifecycles. Integrated <strong>Inversion for Emphasis</strong> into high-stakes board reporting.</p>
+                        <p class="text-xs text-slate-400 italic mt-3">Confidentiality protected.</p>
+                    </div>
+                    <div class="interactive-card bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                        <p class="text-xs font-bold text-purple-600 uppercase tracking-wide mb-1">Technical Consulting | Istoria</p>
+                        <h3 class="text-lg font-bold serif-font mb-2">Nuanced Persuasion</h3>
+                        <p class="text-slate-600 text-sm">Mastery of <strong>Agenda Setting</strong> and voice modulation. Successfully navigated fluid tense-switching for scenario-based consulting.</p>
+                        <p class="text-xs text-slate-400 italic mt-3">Confidentiality protected.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <h3 class="text-xl font-bold serif-font mb-4">Teaching Excellence in Action</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="gallery-placeholder p-4 text-center cursor-pointer" onclick="alert('Upload your teaching photos to the GitHub repo to display them here.')">
+                        <i class="fas fa-chalkboard-teacher text-3xl mb-2"></i>
+                        <p class="text-xs font-semibold">Classroom Session</p>
+                        <p class="text-xs opacity-70 mt-1">Add your photo</p>
+                    </div>
+                    <div class="gallery-placeholder p-4 text-center cursor-pointer" onclick="alert('Upload your teaching photos to the GitHub repo to display them here.')">
+                        <i class="fas fa-users text-3xl mb-2"></i>
+                        <p class="text-xs font-semibold">Student Workshop</p>
+                        <p class="text-xs opacity-70 mt-1">Add your photo</p>
+                    </div>
+                    <div class="gallery-placeholder p-4 text-center cursor-pointer" onclick="alert('Upload your teaching photos to the GitHub repo to display them here.')">
+                        <i class="fas fa-video text-3xl mb-2"></i>
+                        <p class="text-xs font-semibold">Online Session</p>
+                        <p class="text-xs opacity-70 mt-1">Add your photo</p>
+                    </div>
+                    <div class="gallery-placeholder p-4 text-center cursor-pointer" onclick="alert('Upload your teaching photos to the GitHub repo to display them here.')">
+                        <i class="fas fa-award text-3xl mb-2"></i>
+                        <p class="text-xs font-semibold">Achievement</p>
+                        <p class="text-xs opacity-70 mt-1">Add your photo</p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 text-center mt-3 italic">Photos will display here once uploaded to your GitHub repository.</p>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section id="contact" class="hidden animate-fade-in pb-8">
+                <h2 class="text-2xl font-bold serif-font mb-2">Start Your Transformation</h2>
+                <p class="text-slate-500 mb-8">Ready to bridge the gap between B2 and C1? Let's build your cognitive-linguistic roadmap.</p>
+
+                <div class="space-y-4 mb-8">
+                    <a href="mailto:clyde.agnew@gmail.com" class="flex items-center p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-semibold">Email Me Directly</p>
+                            <p class="font-bold text-slate-800">clyde.agnew@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="tel:+27773844883" class="flex items-center p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-semibold">WhatsApp</p>
+                            <p class="font-bold text-slate-800">+27 77 384 4883</p>
+                        </div>
+                    </a>
+                    <div class="flex items-center p-4 bg-slate-50 rounded-xl">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 text-white flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-semibold">Local Time (Pretoria)</p>
+                            <p class="font-bold text-slate-800" id="time-display">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="https://formspree.io/f/placeholder" method="POST" class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm space-y-4">
+                    <input type="hidden" name="subject" value="New Inquiry: knight School Strategy Session">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
+                        <input type="text" name="name" required class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Current English Level (Approx.)</label>
+                        <select name="level" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 outline-none">
+                            <option>Intermediate (B1)</option>
+                            <option>Upper Intermediate (B2)</option>
+                            <option>Advanced (C1)</option>
+                            <option>IELTS Prep Focus</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Primary Goal</label>
+                        <textarea name="goal" rows="3" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="Tell me what you want to achieve..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors">Request Diagnostic Session</button>
+                    <p class="text-xs text-slate-400 text-center">By submitting, you agree to the knight School Privacy Protocol.</p>
+                </form>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 rounded-2xl p-6 mt-8 mb-6">
+            <p class="font-semibold mb-1">&copy; 2026 knight School | Pretoria, South Africa</p>
+            <p class="text-xs text-slate-400 italic mb-4">knight School adheres to strict professional confidentiality protocols. All client outcomes are anonymized to comply with global privacy standards.</p>
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+                <i class="fas fa-network-wired"></i>
+                <span>Infrastructure: Dedicated High-Speed Fiber Connectivity</span>
             </div>
-        </section>
-        <section id="timeline" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hidden">
-            <div class="mb-8 border-b border-slate-200 pb-4"><h2 class="text-3xl font-bold text-slate-900 serif-font">Professional Journey</h2><p class="text-slate-600 mt-2">A decade of global teaching excellence. Click on a role to view details.</p></div>
-            <div class="flex flex-col lg:row gap-8 min-h-[500px]"><div class="w-full lg:w-1/3 overflow-y-auto no-scrollbar space-y-3" id="timeline-list"></div><div class="w-full lg:w-2/3 bg-white rounded-xl shadow-lg border border-slate-100 p-8" id="timeline-detail-content"><div class="flex flex-col items-center justify-center h-full text-slate-400"><i class="fas fa-hand-pointer fa-3x mb-4"></i><p>Select a role to view details</p></div></div></div>
-        </section>
-        <section id="ielts-video" class="py-16 bg-slate-900 text-white"><div class="max-w-7xl mx-auto px-4"><div class="flex flex-col lg:flex-row items-center gap-12"><div class="w-full lg:w-1/2"><div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-500/30 aspect-video bg-slate-800"><iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/YOURVIDEOID" title="Clyde Agnew IELTS Masterclass" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div><div class="w-full lg:w-1/2"><span class="text-blue-400 font-bold tracking-widest uppercase text-sm">Knight Scholars Present</span><h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6 serif-font">The Psychology of the IELTS Band 7.5</h2><p class="text-slate-400 text-lg mb-6">In this session, I break down the Cognitive Load Theory—why most students freeze during the Speaking exam and how to hack your brain to stay fluent under pressure.</p><ul class="space-y-4 mb-8"><li class="flex items-center gap-3"><i class="fas fa-check-circle text-blue-500"></i><span>Managing the Affective Filter (Anxiety Control)</span></li><li class="flex items-center gap-3"><i class="fas fa-check-circle text-blue-500"></i><span>Lexical Resource vs. Cognitive Retrieval</span></li><li class="flex items-center gap-3"><i class="fas fa-check-circle text-blue-500"></i><span>Native-Level Fluency Strategy</span></li></ul><button onclick="navTo('contact')" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg">Book a Diagnostic Call</button></div></div></div></section>
-        <section id="ielts-generator" class="py-16 bg-white"><div class="max-w-4xl mx-auto px-4"><div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-xl"><div class="text-center mb-10"><h2 class="text-3xl font-bold text-slate-900 serif-font">IELTS Band Estimator</h2><p class="text-slate-600 mt-2">Enter your current practice scores to calculate your overall Band Score.</p></div><div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div class="space-y-6"><div><label class="block text-sm font-bold text-slate-700 mb-2">Listening (0-9)</label><input type="number" id="listening" min="0" max="9" step="0.5" value="6.0" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none"></div><div><label class="block text-sm font-bold text-slate-700 mb-2">Reading (0-9)</label><input type="number" id="reading" min="0" max="9" step="0.5" value="6.0" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none"></div><div><label class="block text-sm font-bold text-slate-700 mb-2">Writing (0-9)</label><input type="number" id="writing" min="0" max="9" step="0.5" value="5.5" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none"></div><div><label class="block text-sm font-bold text-slate-700 mb-2">Speaking (0-9)</label><input type="number" id="speaking" min="0" max="9" step="0.5" value="6.0" oninput="calculateBand()" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none"></div></div><div class="bg-blue-600 rounded-2xl p-8 text-white flex flex-col items-center justify-center text-center"><p class="text-blue-100 uppercase tracking-widest text-sm font-bold">Estimated Overall Band</p><div id="overall-band" class="text-7xl font-bold my-4">6.0</div><p id="band-description" class="text-blue-100 text-sm italic mb-6">Competent User</p><button onclick="navTo('contact')" class="w-full py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition shadow-lg">Reach Band 7.5</button></div></div></div></div></section>
-        <section id="results" class="py-20 px-4 max-w-7xl mx-auto hidden"><h2 class="text-3xl font-bold text-center mb-12">Professional Case Studies</h2><div class="grid md:grid-cols-2 gap-8"><div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100"><p class="text-blue-600 font-bold text-xs mb-2">ENGINEERING OPERATIONS | ISTORIA</p><h3 class="font-bold text-xl mb-4">B2 to C1 Transition</h3><p class="text-slate-600 text-sm mb-4">Focus on ERP frameworks and project lifecycles. Integrated <strong>Inversion for Emphasis</strong> into high-stakes board reporting.</p><span class="text-xs italic text-slate-400">Confidentiality protected.</span></div><div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100"><p class="text-purple-600 font-bold text-xs mb-2">TECHNICAL CONSULTING | ISTORIA</p><h3 class="font-bold text-xl mb-4">Nuanced Persuasion</h3><p class="text-slate-600 text-sm mb-4">Mastery of <strong>Agenda Setting</strong> and voice modulation. Successfully navigated fluid tense-switching for scenario-based consulting.</p><span class="text-xs italic text-slate-400">Confidentiality protected.</span></div></div><div class="mt-16 text-center"><h3 class="text-2xl font-bold mb-8">Teaching Excellence in Action</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000045210.jpg" onclick="openPhotoModal(0)" class="rounded-lg h-64 w-full object-cover cursor-pointer hover:opacity-90 transition shadow-md"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000045214.jpg" onclick="openPhotoModal(1)" class="rounded-lg h-64 w-full object-cover cursor-pointer hover:opacity-90 transition shadow-md"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000060028.jpg" onclick="openPhotoModal(2)" class="rounded-lg h-64 w-full object-cover cursor-pointer hover:opacity-90 transition shadow-md"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000045206.jpg" onclick="openPhotoModal(3)" class="rounded-lg h-64 w-full object-cover cursor-pointer hover:opacity-90 transition shadow-md"></div></div></section>
-        <section id="contact" class="py-20 bg-white hidden"><div class="max-w-7xl mx-auto px-4"><div class="grid lg:grid-cols-2 gap-16 items-start"><div><h2 class="text-4xl font-bold text-slate-900 mb-6">Start Your Transformation</h2><p class="text-lg text-slate-600 mb-8">Ready to bridge the gap between B2 and C1? Let's build your cognitive-linguistic roadmap.</p><div class="space-y-6"><div class="flex items-center gap-4"><div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><i class="fas fa-envelope"></i></div><div><p class="text-xs font-bold text-slate-400 uppercase">Email Me Directly</p><a href="mailto:clyde.agnew@gmail.com" class="text-lg font-semibold text-slate-800 hover:text-blue-600">clyde.agnew@gmail.com</a></div></div><div class="flex items-center gap-4"><div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600"><i class="fab fa-whatsapp"></i></div><div><p class="text-xs font-bold text-slate-400 uppercase">WhatsApp</p><a href="tel:+27773844883" class="text-lg font-semibold text-slate-800">+27 77 384 4883</a></div></div><div class="flex items-center gap-4"><div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-600"><i class="fas fa-clock"></i></div><div><p class="text-xs font-bold text-slate-400 uppercase">Local Time (Pretoria)</p><p id="time-display" class="text-lg font-semibold text-slate-800">Loading...</p></div></div></div></div><div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm"><form action="mailto:clyde.agnew@gmail.com" method="GET" enctype="text/plain" class="space-y-4"><input type="hidden" name="subject" value="New Inquiry: Knight Scholars Strategy Session"><div><label class="block text-sm font-bold text-slate-700 mb-1">Full Name</label><input type="text" name="name" required class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 outline-none"></div><div><label class="block text-sm font-bold text-slate-700 mb-1">Current English Level (Approx.)</label><select name="level" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 outline-none"><option>Intermediate (B1)</option><option>Upper Intermediate (B2)</option><option>Advanced (C1)</option><option>IELTS Prep Focus</option></select></div><div><label class="block text-sm font-bold text-slate-700 mb-1">Primary Goal</label><textarea name="body" rows="4" placeholder="How can I help you reach your goals?" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 outline-none"></textarea></div><button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition shadow-lg">Request Diagnostic Session</button><p class="text-center text-[10px] text-slate-400 mt-4">By submitting, you agree to the Knight Scholars Privacy Protocol.</p></form></div></div></div></section>
-    </main>
-    <footer class="py-12 bg-slate-950 text-slate-500 text-sm border-t border-slate-900"><div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center"><div><p>&copy; 2026 Knight Scholars | Pretoria, South Africa</p><p class="mt-2 text-xs italic">Knight Scholars adheres to strict professional confidentiality protocols. All client outcomes are anonymized to comply with global privacy standards.</p></div><div class="md:text-right"><p><i class="fas fa-network-wired text-blue-500 mr-2"></i>Infrastructure: Dedicated High-Speed Fiber Connectivity</p></div></div></footer>
-    <div id="photoModal" class="modal" onclick="closeModal()"><img id="modalImg" src="" class="photo-modal-image"></div>
+        </footer>
+    </div>
+
     <script>
         const timelineData = [
             { id: 1, year: '2023-Present', title: 'Senior English Instructor', company: 'Freelance / Remote', location: 'Pretoria, South Africa', type: 'Remote', icon: 'fa-laptop-house', color: 'blue', achievements: ['Maintained 100% reliability with dedicated fiber infrastructure', 'Specialized in IELTS preparation with 92% student pass rate', 'Developed custom curriculum for Business English clients (Istoria)', 'Synthesized psychology-driven teaching methodologies'], skills: ['IELTS', 'Business English', 'Cognitive Load Theory', 'Curriculum Design'] },
             { id: 2, year: '2019-2023', title: 'Online English Instructor', company: 'Multiple Platforms (Cambly, Preply, iTalki)', location: 'Remote', type: 'Contract', icon: 'fa-video', color: 'purple', achievements: ['Taught 500+ students from 30+ countries', 'Maintained 4.95/5 average rating across all platforms', '95% student retention rate'], skills: ['Conversational English', 'TOEFL', 'Exam Prep'] },
             { id: 3, year: '2017-2022 (Intermittent)', title: 'Gameshow MC & Educational Consultant', company: 'Rural Outreach Initiatives', location: 'Various Provinces, Vietnam', type: 'Freelance', icon: 'fa-microphone-alt', color: 'amber', achievements: ['Designed and hosted high-energy English gameshows for 200+ students', 'Bridged engagement gaps for rural learners using gamified triggers', 'Mastered large-scale classroom management in non-traditional environments'], skills: ['Public Speaking', 'Gamification', 'Student Motivation'] },
-            { id: 4, year: '2017-2019', title: 'ESL Teacher', company: 'VinSchool', location: 'Hanoi, Vietnam', type: 'Full-time', icon: 'fa-chalkboard-teacher', color: 'green', achievements: ['Delivered Cambridge International Curriculum (IGCSE/Lower Secondary)', 'Implemented student-centered psychology techniques for engagement', 'Received "Outstanding Teacher" award in 2018'], skills: ['Cambridge Curriculum', 'CLIL Pedagogy', 'Classroom Management'] },
+            { id: 4, year: '2017-2019', title: 'ESL Teacher', company: 'VinSchool', location: 'Hanoi, Vietnam', type: 'Full-time', icon: 'fa-chalkboard-teacher', color: 'green', achievements: ['Delivered Cambridge International Curriculum (IGCSE/Lower Secondary)', 'Implemented student-centered psychology techniques for engagement', 'Received Outstanding Teacher award in 2018'], skills: ['Cambridge Curriculum', 'CLIL Pedagogy', 'Classroom Management'] },
             { id: 5, year: '2017', title: 'ESL Instructor (Foundational)', company: 'Galaxy Language Center', location: 'Ho Chi Minh City, Vietnam', type: 'Full-time', icon: 'fa-rocket', color: 'indigo', achievements: ['Initiated professional ESL career managing 15 classes per week', 'Developed foundational skills for large groups (25+ students)', 'Adapted materials for Vietnamese cultural context'], skills: ['General English', 'Phonetics', 'Cultural Adaptation'] }
         ];
-        function populateTimeline() { const list = document.getElementById('timeline-list'); list.innerHTML = ''; timelineData.forEach((item, index) => { const div = document.createElement('div'); div.className = `timeline-item bg-white p-4 rounded-lg border-2 border-slate-200 hover:border-${item.color}-500 transition-all cursor-pointer`; div.onclick = () => showTimelineDetail(item.id); div.innerHTML = `<div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-${item.color}-100 flex items-center justify-center text-${item.color}-600 mr-3"><i class="fas ${item.icon}"></i></div><div><p class="text-xs text-slate-500 font-semibold">${item.year}</p><h4 class="text-sm font-bold text-slate-800">${item.title}</h4><p class="text-xs text-slate-600">${item.company}</p></div></div>`; list.appendChild(div); if (index === 0) showTimelineDetail(item.id); }); }
-        function showTimelineDetail(id) { const item = timelineData.find(d => d.id === id); const content = document.getElementById('timeline-detail-content'); content.innerHTML = `<div class="animate-fade-in"><div class="flex items-center mb-6"><div class="w-16 h-16 rounded-full bg-${item.color}-100 flex items-center justify-center text-${item.color}-600 mr-4"><i class="fas ${item.icon} fa-2x"></i></div><div><h3 class="text-2xl font-bold text-slate-900 serif-font">${item.title}</h3><p class="text-slate-600">${item.company}</p></div></div><div class="grid grid-cols-3 gap-4 mb-6"><div class="bg-slate-50 p-3 rounded-lg"><p class="text-xs text-slate-500 uppercase">Period</p><p class="font-semibold text-sm">${item.year}</p></div><div class="bg-slate-50 p-3 rounded-lg"><p class="text-xs text-slate-500 uppercase">Location</p><p class="font-semibold text-sm">${item.location}</p></div><div class="bg-slate-50 p-3 rounded-lg"><p class="text-xs text-slate-500 uppercase">Type</p><p class="font-semibold text-sm">${item.type}</p></div></div><div class="mb-6"><h4 class="font-bold text-slate-800 mb-2">Key Achievements</h4><ul class="space-y-1">${item.achievements.map(a => `<li class="text-sm text-slate-600 flex items-start"><i class="fas fa-check-circle text-${item.color}-500 mr-2 mt-1"></i>${a}</li>`).join('')}</ul></div><div><h4 class="font-bold text-slate-800 mb-2">Skills Focus</h4><div class="flex flex-wrap gap-2">${item.skills.map(s => `<span class="px-2 py-1 bg-${item.color}-50 text-${item.color}-700 rounded text-xs font-semibold">${s}</span>`).join('')}</div></div></div>`; }
-        function navTo(sectionId) { document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden')); document.getElementById(sectionId).classList.remove('hidden'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); document.getElementById('nav-' + sectionId).classList.add('active'); if (sectionId === 'timeline') populateTimeline(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        function toggleTheme() { document.body.classList.toggle('dark-mode'); const icon = document.getElementById('theme-icon'); icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun'); }
-        const galleryData = [{ src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000045210.jpg' }, { src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000045214.jpg' }, { src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000060028.jpg' }, { src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/1000045206.jpg' }];
-        function openPhotoModal(idx) { document.getElementById('modalImg').src = galleryData[idx].src; document.getElementById('photoModal').classList.add('active'); }
-        function closeModal() { document.getElementById('photoModal').classList.remove('active'); }
-        function calculateBand() { const l = parseFloat(document.getElementById('listening').value) || 0; const r = parseFloat(document.getElementById('reading').value) || 0; const w = parseFloat(document.getElementById('writing').value) || 0; const s = parseFloat(document.getElementById('speaking').value) || 0; let avg = (l + r + w + s) / 4; let rounded = Math.round(avg * 2) / 2; document.getElementById('overall-band').innerText = rounded.toFixed(1); let desc = "Expert User"; if (rounded < 8) desc = "Good User"; if (rounded < 7) desc = "Competent User"; if (rounded < 6) desc = "Modest User"; document.getElementById('band-description').innerText = desc; }
-        function updateTime() { const options = { timeZone: 'Africa/Johannesburg', hour: '2-digit', minute: '2-digit', hour12: true }; const time = new Intl.DateTimeFormat('en-US', options).format(new Date()); document.getElementById('time-display').innerText = time + " SAST"; }
-        setInterval(updateTime, 60000); updateTime();
+
+        function populateTimeline() {
+            const list = document.getElementById('timeline-list');
+            list.innerHTML = '';
+            timelineData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'timeline-item bg-white p-4 rounded-lg border-2 border-slate-200 hover:border-blue-500 transition-all cursor-pointer';
+                div.onclick = () => showTimelineDetail(item.id);
+                div.innerHTML = `<div class="flex items-start"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3"><i class="fas ${item.icon}"></i></div><div><p class="text-xs text-slate-500 font-semibold">${item.year}</p><h4 class="text-sm font-bold text-slate-800">${item.title}</h4><p class="text-xs text-slate-600">${item.company}</p></div></div>`;
+                list.appendChild(div);
+                if (index === 0) showTimelineDetail(item.id);
+            });
+        }
+
+        function showTimelineDetail(id) {
+            const item = timelineData.find(d => d.id === id);
+            const content = document.getElementById('timeline-detail-content');
+            content.innerHTML = `<div class="animate-fade-in"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3"><i class="fas ${item.icon} fa-lg"></i></div><div><h3 class="text-lg font-bold text-slate-900 serif-font">${item.title}</h3><p class="text-slate-500 text-sm">${item.company}</p></div></div><div class="grid grid-cols-3 gap-2 mb-4">${[['Period',item.year],['Location',item.location],['Type',item.type]].map(([l,v])=>`<div class="bg-slate-50 p-2 rounded-lg"><p class="text-xs text-slate-400 uppercase">${l}</p><p class="font-semibold text-xs">${v}</p></div>`).join('')}</div><div class="mb-4"><h4 class="font-bold text-slate-700 mb-2 text-sm">Key Achievements</h4><ul class="space-y-1">${item.achievements.map(a=>`<li class="text-sm text-slate-600 flex items-start"><i class="fas fa-check-circle text-blue-500 mr-2 mt-0.5 flex-shrink-0"></i>${a}</li>`).join('')}</ul></div><div><h4 class="font-bold text-slate-700 mb-2 text-sm">Skills Focus</h4><div class="flex flex-wrap gap-2">${item.skills.map(s=>`<span class="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-semibold">${s}</span>`).join('')}</div></div></div>`;
+        }
+
+        function navTo(sectionId) {
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById('nav-' + sectionId).classList.add('active');
+            if (sectionId === 'timeline') populateTimeline();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('theme-icon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        function closeModal() {
+            document.getElementById('photoModal').classList.remove('active');
+        }
+
+        function calculateBand() {
+            const l = parseFloat(document.getElementById('listening').value) || 0;
+            const r = parseFloat(document.getElementById('reading').value) || 0;
+            const w = parseFloat(document.getElementById('writing').value) || 0;
+            const s = parseFloat(document.getElementById('speaking').value) || 0;
+            let avg = (l + r + w + s) / 4;
+            let rounded = Math.round(avg * 2) / 2;
+            document.getElementById('overall-band').innerText = rounded.toFixed(1);
+            let desc = 'Expert User';
+            if (rounded < 8) desc = 'Good User';
+            if (rounded < 7) desc = 'Competent User';
+            if (rounded < 6) desc = 'Modest User';
+            document.getElementById('band-description').innerText = desc;
+        }
+
+        function updateTime() {
+            const options = { timeZone: 'Africa/Johannesburg', hour: '2-digit', minute: '2-digit', hour12: true };
+            const time = new Intl.DateTimeFormat('en-US', options).format(new Date());
+            document.getElementById('time-display').innerText = time + ' SAST';
+        }
+
+        setInterval(updateTime, 60000);
+        updateTime();
     </script>
 </body>
 </html>
