@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Personalized Script Builder | knight School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f0f2f5; }
+    .step-card { display: none; }
+    .step-card.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .gradient-text { background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="min-h-screen py-12 px-4">
+  <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center text-white">
+      <h1 class="text-3xl font-bold mb-2">IELTS Script Builder</h1>
+      <p class="opacity-90">Personalized answers based on YOUR vocabulary and level</p>
+    </div>
+
+    <div class="p-8">
+      <!-- Step 1: User Profile -->
+      <div id="step1" class="step-card active">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">1. Tell me about you</h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Your Current Band Level</label>
+            <select id="currentLevel" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
+              <option value="5">Band 5.0 - 5.5 (Intermediate)</option>
+              <option value="6">Band 6.0 - 6.5 (Upper-Intermediate)</option>
+              <option value="7">Band 7.0+ (Advanced)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Target Goal</label>
+            <input type="text" id="targetGoal" placeholder="e.g. Band 7.5 for University in UK" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" />
+          </div>
+          <button onclick="nextStep(2)" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition mt-4">Next Step →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Keywords -->
+      <div id="step2" class="step-card">
+        <h2 class="text-2xl font-bold mb-2 text-gray-800">2. Your Ingredients</h2>
+        <p class="text-gray-500 mb-6">Enter 3-5 keywords or facts you know about the topic.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Topic</label>
+            <input type="text" id="scriptTopic" placeholder="e.g. My Favorite Hobby" class="w-full p-3 border rounded-xl outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Your Keywords (comma separated)</label>
+            <textarea id="keywords" rows="3" placeholder="e.g. photography, nature, digital camera, weekend trips" class="w-full p-3 border rounded-xl outline-none"></textarea>
+          </div>
+          <div class="flex gap-4">
+            <button onclick="nextStep(1)" class="flex-1 border-2 border-gray-200 text-gray-600 font-bold py-4 rounded-xl hover:bg-gray-50 transition">← Back</button>
+            <button onclick="generateScript()" class="flex-1 bg-purple-600 text-white font-bold py-4 rounded-xl hover:bg-purple-700 transition">Generate My Script ✨</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Result -->
+      <div id="step3" class="step-card">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">Your Personalized Script</h2>
+          <span id="levelBadge" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">Target: Band 7.0</span>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+            <h3 class="font-bold text-blue-800 mb-2">Part 1: Natural Response</h3>
+            <p id="part1Result" class="text-gray-700 italic"></p>
+          </div>
+
+          <div class="p-6 bg-purple-50 rounded-2xl border border-purple-100">
+            <h3 class="font-bold text-purple-800 mb-2">Part 2: Storytelling Arc</h3>
+            <p id="part2Result" class="text-gray-700 whitespace-pre-line"></p>
+          </div>
+
+          <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
+            <h3 class="font-bold text-pink-800 mb-2">Part 3: Deep Analysis</h3>
+            <p id="part3Result" class="text-gray-700"></p>
+          </div>
+
+          <div id="clydeTip" class="p-4 bg-yellow-50 rounded-xl border border-yellow-200 text-sm text-yellow-800 flex items-start gap-3">
+            <span class="text-xl">💡</span>
+            <div>
+              <p class="font-bold">Clyde's Pro Tip:</p>
+              <p id="tipContent"></p>
+            </div>
+          </div>
+
+          <button onclick="nextStep(1)" class="w-full border-2 border-gray-200 text-gray-600 font-bold py-4 rounded-xl hover:bg-gray-50 transition">Start New Script</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(step) {
+      document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+      document.getElementById('step' + step).classList.add('active');
+    }
+
+    function generateScript() {
+      const level = document.getElementById('currentLevel').value;
+      const topic = document.getElementById('scriptTopic').value || "this topic";
+      const userKeywords = document.getElementById('keywords').value.split(',').map(k => k.trim()).filter(k => k !== "");
+      
+      if (userKeywords.length === 0) {
+        alert("Please enter at least one keyword!");
+        return;
+      }
+
+      const keywordsStr = userKeywords.join(" and ");
+      const mainKeyword = userKeywords[0];
+
+      let p1, p2, p3, tip;
+
+      if (level === "5") {
+        p1 = `I really like ${topic}. I usually use my ${mainKeyword} when I have free time. It makes me feel happy.`;
+        p2 = `I want to talk about ${topic}. First, I found out about it because of ${mainKeyword}. It was very interesting. Also, I use ${keywordsStr} every week. In the future, I want to learn more.`;
+        p3 = `I think ${topic} is important for many people. Using ${mainKeyword} can help us improve our lives easily.`;
+        tip = "Focus on fluency first! Don't worry about being fancy. Keep your sentences simple but keep talking. You've got this!";
+      } else if (level === "6") {
+        p1 = `To be honest, I'm quite passionate about ${topic}. I've been using ${mainKeyword} for a while now, and it's become an essential part of my routine.`;
+        p2 = `If I had to describe ${topic}, I'd start by mentioning ${mainKeyword}. It's played a significant role in my experience. I particularly enjoy the ${keywordsStr} aspect of it. It's not just a hobby; it's a way to unwind after a stressful day.`;
+        p3 = `From a broader perspective, ${topic} has evolved significantly. While ${mainKeyword} is beneficial, we have to consider the impact of ${userKeywords[1] || 'modern changes'} on society.`;
+        tip = "Try using 'connector' words like 'However', 'Moreover', and 'On the other hand'. It's like adding seasoning to your English—makes it much tastier for the examiner!";
+      } else {
+        p1 = `That's a fascinating question. ${topic.charAt(0).toUpperCase() + topic.slice(1)} has always intrigued me, particularly regarding ${mainKeyword}. I find that it offers a unique perspective on modern life.`;
+        p2 = `I'd like to delve into the world of ${topic}. The cornerstone of my interest is undoubtedly ${mainKeyword}. When you combine that with ${keywordsStr}, you get a truly multifaceted experience. It's essentially a psychological anchor for me, allowing for both creative expression and cognitive stimulation.`;
+        p3 = `One could argue that the proliferation of ${topic} is a double-edged sword. While the integration of ${mainKeyword} has catalyzed progress, we mustn't overlook the nuanced challenges posed by ${userKeywords[1] || 'systemic factors'}. It's a complex interplay between innovation and tradition.`;
+        tip = "You're at the 'Sophisticated' level now. Use 'hedging' language like 'It could be argued that...' or 'One might suggest...'. It shows you understand the complexity of the world. Also, don't forget to smile—it confuses the examiner into giving you a higher score!";
+      }
+
+      document.getElementById('part1Result').textContent = p1;
+      document.getElementById('part2Result').textContent = p2;
+      document.getElementById('part3Result').textContent = p3;
+      document.getElementById('tipContent').textContent = tip;
+      document.getElementById('levelBadge').textContent = "Target: Band " + (parseInt(level) + 1.0).toFixed(1);
+
+      nextStep(3);
+    }
+  </script>
+</body>
+</html>
