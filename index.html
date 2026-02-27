@@ -16,19 +16,22 @@
     }
     body { font-family: 'Inter', sans-serif; background-color: var(--color-bg-light); color: var(--color-text-dark); transition: all 0.3s ease; }
     .playfair { font-family: 'Playfair Display', serif; }
-    .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 1.5rem; }
-    .gradient-text { background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .nav-link { position: relative; font-weight: 500; color: #64748b; transition: color 0.3s; }
-    .nav-link:hover { color: var(--color-primary); }
+    .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.4); border-radius: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .gradient-text { background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-link { font-weight: 500; color: #64748b; transition: color 0.3s; }
+    .nav-link:hover { color: #2563eb; }
     .tool-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .tool-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px -5px rgba(0,0,0,0.12); }
+    .profile-ring { background: linear-gradient(135deg, #2563eb, #7c3aed); padding: 4px; border-radius: 50%; display: inline-block; }
+    .profile-ring img { border-radius: 50%; display: block; width: 100%; height: 100%; object-fit: cover; border: 4px solid white; }
   </style>
 </head>
 <body class="antialiased">
-  <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="text-xl font-bold tracking-tight">knight<span class="text-blue-600">School</span></div>
-      <div class="hidden md:flex space-x-8">
+      <div class="hidden md:flex items-center space-x-8">
         <a href="#about" class="nav-link">About</a>
         <a href="#labs" class="nav-link">Interactive Labs</a>
         <a href="#story" class="nav-link">The Story</a>
@@ -37,78 +40,81 @@
     </div>
   </nav>
 
-  <header class="pt-32 pb-20 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-      <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
-        <img src="outdoor_selfie.jpg" alt="Clyde Agnew" class="w-full h-full object-cover" />
+  <header id="about" class="pt-32 pb-20 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-shrink-0">
+        <div class="profile-ring w-44 h-44 md:w-56 md:h-56">
+          <img src="profile.jpg.jpg" alt="Clyde Agnew" />
+        </div>
       </div>
       <div class="flex-1 text-center md:text-left">
-        <h1 class="text-5xl md:text-6xl font-bold playfair leading-tight mb-4">Psychology-Driven <br/><span class="gradient-text">ESL & IELTS Specialist</span></h1>
-        <p class="text-xl text-slate-600 max-w-2xl mb-8 font-light leading-relaxed">I help ambitious learners turn English into a career advantage by blending educational psychology, exam strategy, and real-world communication practice.</p>
-        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-          <div class="flex items-center gap-2 text-slate-500 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
-            <span>📍 Pretoria, South Africa</span>
-          </div>
-          <div class="flex items-center gap-2 text-slate-500 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
-            <span>🎓 Master's Aspirant (Ed Psych)</span>
-          </div>
+        <p class="text-blue-600 font-semibold tracking-widest text-sm uppercase mb-2">knightSchool</p>
+        <h1 class="text-4xl md:text-5xl font-bold playfair leading-tight mb-4">Psychology-Driven<br/><span class="gradient-text">ESL & IELTS Specialist</span></h1>
+        <p class="text-lg text-slate-600 max-w-xl mb-8 font-light leading-relaxed">I help ambitious learners turn English into a career advantage by blending educational psychology, exam strategy, and real-world communication practice.</p>
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <span class="flex items-center gap-2 text-slate-500 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm text-sm">📍 Pretoria, South Africa</span>
+          <span class="flex items-center gap-2 text-slate-500 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm text-sm">🎓 Master's Aspirant (Ed Psych)</span>
+          <a href="mailto:clyde.agnew@gmail.com" class="flex items-center gap-2 text-blue-600 bg-blue-50 px-4 py-2 rounded-lg border border-blue-100 shadow-sm text-sm font-medium hover:bg-blue-100 transition">✉ clyde.agnew@gmail.com</a>
         </div>
       </div>
     </div>
   </header>
 
   <section id="labs" class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold mb-4">Interactive Learning Labs</h2>
-        <p class="text-slate-600 max-w-xl mx-auto">Custom-built tools designed to reduce learner anxiety and accelerate Band score growth through personalized practice.</p>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <p class="text-blue-600 font-semibold tracking-widest text-sm uppercase mb-2">Tools & Practice</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Interactive Learning Labs</h2>
+        <p class="text-slate-500 max-w-xl mx-auto">Custom-built tools designed to reduce learner anxiety and accelerate Band score growth through personalized practice.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <a href="ielts-generator.html" class="glass-card tool-card p-8 flex flex-col">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6 text-2xl">⚡</div>
-          <h3 class="text-xl font-bold mb-3">IELTS Question Generator</h3>
-          <p class="text-slate-600 mb-6">Instantly create high-probability speaking and writing questions for any topic. No more "I don't know what to say."</p>
-          <span class="mt-auto text-blue-600 font-semibold flex items-center gap-2">Try the Lab →</span>
+        <a href="ielts-generator.html" class="glass-card tool-card p-8 flex flex-col group">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-2xl mb-5">⚡</div>
+          <h3 class="text-lg font-bold mb-2">IELTS Question Generator</h3>
+          <p class="text-slate-500 text-sm mb-6 leading-relaxed">Instantly create high-probability speaking and writing questions for any topic.</p>
+          <span class="mt-auto text-blue-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Try the Lab →</span>
         </a>
-        <a href="ielts-script-builder.html" class="glass-card tool-card p-8 flex flex-col">
-          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6 text-2xl">🖋️</div>
-          <h3 class="text-xl font-bold mb-3">Personalized Script Builder</h3>
-          <p class="text-slate-600 mb-6">Build response scripts tailored to your current level and vocabulary. Includes witty tips for natural delivery.</p>
-          <span class="mt-auto text-purple-600 font-semibold flex items-center gap-2">Build a Script →</span>
+        <a href="ielts-script-builder.html" class="glass-card tool-card p-8 flex flex-col group">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-5">🖋️</div>
+          <h3 class="text-lg font-bold mb-2">Personalized Script Builder</h3>
+          <p class="text-slate-500 text-sm mb-6 leading-relaxed">Build response scripts tailored to your current Band level and vocabulary.</p>
+          <span class="mt-auto text-purple-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Build a Script →</span>
         </a>
-        <div class="glass-card tool-card p-8 flex flex-col opacity-60">
-          <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-6 text-2xl">📊</div>
-          <h3 class="text-xl font-bold mb-3">Behavioral Dashboard</h3>
-          <p class="text-slate-600 mb-6">Track your learning habits, vocabulary retention, and confidence levels over time. Coming soon in Phase A.</p>
-          <span class="mt-auto text-slate-400 font-semibold italic">Under Development</span>
+        <div class="glass-card p-8 flex flex-col opacity-50 cursor-not-allowed">
+          <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-2xl mb-5">📊</div>
+          <h3 class="text-lg font-bold mb-2">Behavioral Dashboard</h3>
+          <p class="text-slate-500 text-sm mb-6 leading-relaxed">Track your learning habits, vocabulary retention, and confidence over time.</p>
+          <span class="mt-auto text-slate-400 font-semibold text-sm italic">Coming Soon — Phase A</span>
         </div>
       </div>
     </div>
   </section>
 
   <section id="story" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
       <div class="flex-1">
-        <h2 class="text-4xl font-bold playfair mb-6">The knight's Tale</h2>
-        <div class="prose prose-lg text-slate-600 font-light leading-relaxed">
-          <p class="mb-4">With over a decade of classroom and online experience spanning Vietnam, China, and international platforms, my journey hasn't been just about teaching grammar—it's been about understanding the human behind the language.</p>
-          <p class="mb-4 italic font-medium text-slate-800">"We don't just learn English; we overcome the psychological barriers to communication."</p>
+        <p class="text-blue-600 font-semibold tracking-widest text-sm uppercase mb-2">The Journey</p>
+        <h2 class="text-3xl md:text-4xl font-bold playfair mb-6">The knight's Tale</h2>
+        <div class="text-slate-600 font-light leading-relaxed space-y-4">
+          <p>With over a decade of classroom and online experience spanning Vietnam, China, and international platforms, my journey hasn't been just about teaching grammar — it's been about understanding the human behind the language.</p>
+          <blockquote class="border-l-4 border-blue-500 pl-4 italic font-medium text-slate-700">&ldquo;We don't just learn English; we overcome the psychological barriers to communication.&rdquo;</blockquote>
           <p>I specialize in IELTS preparation and Cambridge pathways for professionals who need clear, actionable feedback and structured progress tracking.</p>
         </div>
       </div>
-      <div class="w-full md:w-1/2">
+      <div class="w-full md:w-5/12 flex-shrink-0">
         <div class="relative">
-          <img src="business_training.jpg" alt="Teaching Session" class="rounded-3xl shadow-2xl relative z-10" />
-          <div class="absolute -bottom-6 -right-6 w-full h-full bg-blue-100 rounded-3xl -z-10"></div>
+          <img src="business-training.jpg.jpg" alt="Clyde leading a business training session" class="rounded-3xl shadow-2xl w-full relative z-10" />
+          <div class="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl -z-10"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="py-10 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
-      <p>&copy; 2026 knightSchool | Clyde Agnew. All rights reserved.</p>
+  <footer class="py-10 border-t border-slate-100">
+    <div class="max-w-6xl mx-auto px-6 text-center text-slate-400 text-sm">
+      <p>&copy; 2026 knightSchool &mdash; Clyde Agnew. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
