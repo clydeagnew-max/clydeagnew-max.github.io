@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Question Generator | knight School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4">
+  <div class="max-w-4xl w-full bg-white rounded-2xl shadow-2xl p-8">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-gray-800 mb-2">IELTS Question Generator</h1>
+      <p class="text-gray-600">Generate practice questions for Part 1, 2 & 3</p>
+      <p class="text-sm text-blue-600 mt-2">by <span class="font-semibold">knight<span class="text-purple-600">School</span></span></p>
+    </div>
+
+    <!-- Input Section -->
+    <div class="mb-8">
+      <label class="block text-gray-700 font-semibold mb-2">Enter Your Topic:</label>
+      <input 
+        type="text" 
+        id="topicInput" 
+        placeholder="e.g., Technology, Travel, Food, Education..."
+        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+      />
+    </div>
+
+    <!-- Generate Button -->
+    <button 
+      onclick="generateQuestions()"
+      class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 rounded-lg hover:shadow-lg transition-all transform hover:scale-105 mb-6"
+    >
+      Generate Questions ✨
+    </button>
+
+    <!-- Results Section -->
+    <div id="results" class="hidden">
+      <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-4">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Part 1: Introduction & Interview</h3>
+        <ul id="part1List" class="space-y-2"></ul>
+      </div>
+
+      <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 mb-4">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Part 2: Long Turn</h3>
+        <div id="part2Content" class="bg-white p-4 rounded-lg shadow"></div>
+      </div>
+
+      <div class="bg-gradient-to-r from-pink-50 to-blue-50 rounded-xl p-6 mb-4">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Part 3: Discussion</h3>
+        <ul id="part3List" class="space-y-2"></ul>
+      </div>
+
+      <button 
+        onclick="copyToClipboard()"
+        class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition"
+      >
+        📋 Copy All Questions
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const questionDatabase = {
+      Technology: {
+        part1: [
+          "Do you use social media often?",
+          "What technology do you use every day?",
+          "Have you ever taken an online course?",
+          "Do you prefer reading news online or in newspapers?"
+        ],
+        part2: "Describe a piece of technology you find useful. You should say:\n- What it is\n- When you got it\n- How often you use it\n- And explain why it is important to you",
+        part3: [
+          "How has technology changed the way people communicate?",
+          "Do you think technology has made people's lives easier or more complicated?",
+          "What are the disadvantages of relying too much on technology?",
+          "How might technology evolve in the next 20 years?"
+        ]
+      },
+      Travel: {
+        part1: [
+          "Do you like traveling?",
+          "What is your favorite place you've visited?",
+          "Do you prefer traveling alone or with others?",
+          "Have you ever been abroad?"
+        ],
+        part2: "Describe a memorable trip you took. You should say:\n- Where you went\n- Who you went with\n- What you did there\n- And explain why it was memorable",
+        part3: [
+          "Why do you think people enjoy traveling?",
+          "How has tourism changed in your country?",
+          "What are the benefits and drawbacks of international tourism?",
+          "Do you think space tourism will become common in the future?"
+        ]
+      },
+      Education: {
+        part1: [
+          "What subject did you enjoy most at school?",
+          "Do you think exams are a good way to assess students?",
+          "Would you like to study abroad?",
+          "What skills are most important for students today?"
+        ],
+        part2: "Describe a teacher who influenced you. You should say:\n- Who this teacher was\n- What subject they taught\n- What made them special\n- And explain how they influenced you",
+        part3: [
+          "How has education changed in recent years?",
+          "Should university education be free?",
+          "What role does technology play in modern education?",
+          "How can schools better prepare students for the workplace?"
+        ]
+      }
+    };
+
+    function generateQuestions() {
+      const topic = document.getElementById('topicInput').value.trim();
+      const results = document.getElementById('results');
+      
+      if (!topic) {
+        alert('Please enter a topic!');
+        return;
+      }
+
+      // Find matching topic or generate generic questions
+      const data = questionDatabase[topic] || generateGenericQuestions(topic);
+      
+      // Show results
+      results.classList.remove('hidden');
+      
+      // Part 1
+      const part1List = document.getElementById('part1List');
+      part1List.innerHTML = '';
+      data.part1.forEach(q => {
+        part1List.innerHTML += `<li class="flex items-start"><span class="text-blue-600 mr-2">•</span><span class="text-gray-700">${q}</span></li>`;
+      });
+      
+      // Part 2
+      document.getElementById('part2Content').innerHTML = `<p class="text-gray-700 whitespace-pre-line">${data.part2}</p>`;
+      
+      // Part 3
+      const part3List = document.getElementById('part3List');
+      part3List.innerHTML = '';
+      data.part3.forEach(q => {
+        part3List.innerHTML += `<li class="flex items-start"><span class="text-purple-600 mr-2">•</span><span class="text-gray-700">${q}</span></li>`;
+      });
+      
+      // Scroll to results
+      results.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function generateGenericQuestions(topic) {
+      return {
+        part1: [
+          `Do you have an interest in ${topic}?`,
+          `How often do you think about ${topic}?`,
+          `When did you first become interested in ${topic}?`,
+          `Is ${topic} popular in your country?`
+        ],
+        part2: `Describe something related to ${topic}. You should say:\n- What it is\n- When you first experienced it\n- How it affects you\n- And explain why it is important`,
+        part3: [
+          `How has ${topic} changed over the years?`,
+          `What impact does ${topic} have on society?`,
+          `What are the advantages and disadvantages of ${topic}?`,
+          `How might ${topic} develop in the future?`
+        ]
+      };
+    }
+
+    function copyToClipboard() {
+      const part1 = Array.from(document.getElementById('part1List').children).map(li => li.textContent).join('\n');
+      const part2 = document.getElementById('part2Content').textContent;
+      const part3 = Array.from(document.getElementById('part3List').children).map(li => li.textContent).join('\n');
+      
+      const allText = `IELTS QUESTIONS\n\nPART 1:\n${part1}\n\nPART 2:\n${part2}\n\nPART 3:\n${part3}`;
+      
+      navigator.clipboard.writeText(allText).then(() => {
+        alert('✅ Questions copied to clipboard!');
+      });
+    }
+
+    // Allow Enter key to generate
+    document.getElementById('topicInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') generateQuestions();
+    });
+  </script>
+</body>
+</html>
