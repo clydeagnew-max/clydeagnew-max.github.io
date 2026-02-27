@@ -104,6 +104,15 @@
     <!-- Header / Hero -->
     <header class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-10">
       <div>
+              <!-- Profile Image -->
+      <div class="profile-image-container mb-4">
+        <picture>
+          <!-- Mobile version (smaller) -->
+          <source media="(max-width: 768px)" srcset="profile.jpg.jpg" />
+          <!-- Desktop version -->
+          <img src="profile.jpg.jpg" alt="Clyde Agnew" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg" />
+        </picture>
+      </div>
         <div class="logo-text mb-2">
           knight<span>School</span>
         </div>
@@ -171,6 +180,13 @@
         <article class="interactive-card rounded-xl bg-white/80 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 p-5">
           <h2 class="text-lg font-semibold mb-2 serif-font">
             Business & Professional English
+                      <!-- Business Training Focal Point Image -->
+          <picture class="block w-full mb-4 rounded-lg overflow-hidden">
+            <!-- Mobile version (cropped) -->
+            <source media="(max-width: 768px)" srcset="business-training.jpg.jpg" />
+            <!-- Desktop version (full width) -->
+            <img src="business-training.jpg.jpg" alt="Clyde Agnew leading business English training" class="w-full h-48 object-cover" />
+          </picture>
           </h2>
           <p class="text-sm text-slate-700 dark:text-slate-200 mb-2">
             Support for meetings, presentations, and email communication tailored to your real documents and scenarios.
