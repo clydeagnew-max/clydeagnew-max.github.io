@@ -1,151 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IELTS Personalized Script Builder | knight School</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; background: #f0f2f5; }
-    .step-card { display: none; }
-    .step-card.active { display: block; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .gradient-text { background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Script Builder | knight School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0a0a0c; color: #fff; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .step-card { display: none; }
+        .step-card.active { display: block; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
+        .input-field { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .input-field:focus { background: rgba(255, 255, 255, 0.08); border-color: #6366f1; box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); }
+        .card-result { transition: all 0.4s ease; border-left: 4px solid #6366f1; }
+        .card-result:hover { background: rgba(255, 255, 255, 0.05); transform: translateX(5px); }
+    </style>
 </head>
-<body class="min-h-screen py-12 px-4">
-  <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
-    <!-- Header -->
-    <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center text-white">
-      <h1 class="text-3xl font-bold mb-2">IELTS Script Builder</h1>
-      <p class="opacity-90">Personalized answers based on YOUR vocabulary and level</p>
-    </div>
+<body class="min-h-screen flex items-center justify-center py-12 px-4 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-slate-950 to-slate-950">
+    <div class="max-w-4xl w-full">
+        <!-- Main Container -->
+        <div class="glass rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <!-- Header -->
+            <div class="p-10 text-center border-b border-white/5 bg-white/5">
+                <div class="inline-flex p-3 rounded-2xl bg-indigo-500/10 mb-4">
+                    <i class="fas fa-magic gradient-text text-2xl"></i>
+                </div>
+                <h1 class="text-4xl font-bold mb-3 tracking-tight">IELTS <span class="gradient-text">Script Builder</span></h1>
+                <p class="text-slate-400 text-lg">Generate natural, band-aligned responses in seconds.</p>
+            </div>
 
-    <div class="p-8">
-      <!-- Step 1: User Profile -->
-      <div id="step1" class="step-card active">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">1. Tell me about you</h2>
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Your Current Band Level</label>
-            <select id="currentLevel" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
-              <option value="5">Band 5.0 - 5.5 (Intermediate)</option>
-              <option value="6">Band 6.0 - 6.5 (Upper-Intermediate)</option>
-              <option value="7">Band 7.0+ (Advanced)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Target Goal</label>
-            <input type="text" id="targetGoal" placeholder="e.g. Band 7.5 for University in UK" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" />
-          </div>
-          <button onclick="nextStep(2)" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition mt-4">Next Step →</button>
-        </div>
-      </div>
+            <div class="p-10">
+                <!-- Step 1 -->
+                <div id="step1" class="step-card active space-y-8">
+                    <div class="flex items-center space-x-4 mb-2">
+                        <span class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">1</span>
+                        <h2 class="text-xl font-semibold">Your Profile</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400 ml-1">Current Proficiency</label>
+                            <select id="currentLevel" class="w-full p-4 input-field rounded-2xl outline-none appearance-none">
+                                <option value="5">Band 5.0 - 5.5 (Intermediate)</option>
+                                <option value="6">Band 6.0 - 6.5 (Upper-Intermediate)</option>
+                                <option value="7">Band 7.0+ (Advanced)</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400 ml-1">Your Goal</label>
+                            <input type="text" id="targetGoal" placeholder="e.g. Band 7.5" class="w-full p-4 input-field rounded-2xl outline-none">
+                        </div>
+                    </div>
+                    
+                    <button onclick="nextStep(2)" class="w-full p-5 btn-primary rounded-2xl font-bold text-lg flex items-center justify-center space-x-2">
+                        <span>Continue to Ingredients</span>
+                        <i class="fas fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
 
-      <!-- Step 2: Keywords -->
-      <div id="step2" class="step-card">
-        <h2 class="text-2xl font-bold mb-2 text-gray-800">2. Your Ingredients</h2>
-        <p class="text-gray-500 mb-6">Enter 3-5 keywords or facts you know about the topic.</p>
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Topic</label>
-            <input type="text" id="scriptTopic" placeholder="e.g. My Favorite Hobby" class="w-full p-3 border rounded-xl outline-none" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Your Keywords (comma separated)</label>
-            <textarea id="keywords" rows="3" placeholder="e.g. photography, nature, digital camera, weekend trips" class="w-full p-3 border rounded-xl outline-none"></textarea>
-          </div>
-          <div class="flex gap-4">
-            <button onclick="nextStep(1)" class="flex-1 border-2 border-gray-200 text-gray-600 font-bold py-4 rounded-xl hover:bg-gray-50 transition">← Back</button>
-            <button onclick="generateScript()" class="flex-1 bg-purple-600 text-white font-bold py-4 rounded-xl hover:bg-purple-700 transition">Generate My Script ✨</button>
-          </div>
-        </div>
-      </div>
+                <!-- Step 2 -->
+                <div id="step2" class="step-card space-y-8">
+                    <div class="flex items-center space-x-4 mb-2">
+                        <span class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">2</span>
+                        <h2 class="text-xl font-semibold">Input Ingredients</h2>
+                    </div>
 
-      <!-- Step 3: Result -->
-      <div id="step3" class="step-card">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-gray-800">Your Personalized Script</h2>
-          <span id="levelBadge" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">Target: Band 7.0</span>
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400 ml-1">What's the topic?</label>
+                            <input type="text" id="scriptTopic" placeholder="e.g. A memorable journey" class="w-full p-4 input-field rounded-2xl outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400 ml-1">Keywords / Ideas (comma separated)</label>
+                            <textarea id="keywords" rows="3" placeholder="e.g. mountains, train ride, peaceful, scenery" class="w-full p-4 input-field rounded-2xl outline-none resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button onclick="nextStep(1)" class="flex-1 p-5 glass rounded-2xl font-semibold hover:bg-white/5 transition-all">Back</button>
+                        <button onclick="generateScript()" class="flex-[2] p-5 btn-primary rounded-2xl font-bold text-lg flex items-center justify-center space-x-2">
+                            <span>Build My Script</span>
+                            <i class="fas fa-sparkles text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Results -->
+                <div id="step3" class="step-card space-y-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">Ready to Practice!</h2>
+                        </div>
+                        <span id="levelBadge" class="px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 font-bold border border-indigo-500/20">Target: Band 6.0</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-6 glass card-result rounded-3xl">
+                            <h3 class="text-indigo-400 font-bold text-xs uppercase tracking-widest mb-3">Part 1: Natural Response</h3>
+                            <p id="part1Result" class="text-slate-200 text-lg leading-relaxed italic"></p>
+                        </div>
+                        <div class="p-6 glass card-result rounded-3xl border-l-purple-500">
+                            <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-3">Part 2: Storytelling Arc</h3>
+                            <p id="part2Result" class="text-slate-200 text-lg leading-relaxed italic"></p>
+                        </div>
+                        <div class="p-6 glass card-result rounded-3xl border-l-pink-500">
+                            <h3 class="text-pink-400 font-bold text-xs uppercase tracking-widest mb-3">Part 3: Deep Analysis</h3>
+                            <p id="part3Result" class="text-slate-200 text-lg leading-relaxed italic"></p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-3xl bg-indigo-500/10 border border-indigo-500/20 relative overflow-hidden group">
+                        <div class="relative z-10 flex items-start space-x-4">
+                            <div class="text-2xl mt-1">💡</div>
+                            <div>
+                                <h4 class="font-bold text-indigo-300 mb-1">Clyde's Pro Tip:</h4>
+                                <p id="tipContent" class="text-slate-300"></p>
+                            </div>
+                        </div>
+                        <div class="absolute -right-10 -bottom-10 text-8xl opacity-5 group-hover:rotate-12 transition-all">💡</div>
+                    </div>
+
+                    <button onclick="nextStep(1)" class="w-full p-5 glass rounded-2xl font-bold hover:bg-white/5 transition-all text-slate-400">
+                        <i class="fas fa-redo-alt mr-2 text-sm"></i> Start New Script
+                    </button>
+                </div>
+            </div>
         </div>
         
-        <div class="space-y-6">
-          <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
-            <h3 class="font-bold text-blue-800 mb-2">Part 1: Natural Response</h3>
-            <p id="part1Result" class="text-gray-700 italic"></p>
-          </div>
-
-          <div class="p-6 bg-purple-50 rounded-2xl border border-purple-100">
-            <h3 class="font-bold text-purple-800 mb-2">Part 2: Storytelling Arc</h3>
-            <p id="part2Result" class="text-gray-700 whitespace-pre-line"></p>
-          </div>
-
-          <div class="p-6 bg-pink-50 rounded-2xl border border-pink-100">
-            <h3 class="font-bold text-pink-800 mb-2">Part 3: Deep Analysis</h3>
-            <p id="part3Result" class="text-gray-700"></p>
-          </div>
-
-          <div id="clydeTip" class="p-4 bg-yellow-50 rounded-xl border border-yellow-200 text-sm text-yellow-800 flex items-start gap-3">
-            <span class="text-xl">💡</span>
-            <div>
-              <p class="font-bold">Clyde's Pro Tip:</p>
-              <p id="tipContent"></p>
-            </div>
-          </div>
-
-          <button onclick="nextStep(1)" class="w-full border-2 border-gray-200 text-gray-600 font-bold py-4 rounded-xl hover:bg-gray-50 transition">Start New Script</button>
-        </div>
-      </div>
+        <p class="mt-8 text-center text-slate-500 text-sm">
+            &copy; 2026 Knight School | Built for IELTS Success
+        </p>
     </div>
-  </div>
 
-  <script>
-    function nextStep(step) {
-      document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
-      document.getElementById('step' + step).classList.add('active');
-    }
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+            setTimeout(() => {
+                const el = document.getElementById('step' + step);
+                el.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
+        }
 
-    function generateScript() {
-      const level = document.getElementById('currentLevel').value;
-      const topic = document.getElementById('scriptTopic').value || "this topic";
-      const userKeywords = document.getElementById('keywords').value.split(',').map(k => k.trim()).filter(k => k !== "");
-      
-      if (userKeywords.length === 0) {
-        alert("Please enter at least one keyword!");
-        return;
-      }
+        function toGerund(word) {
+            const map = {
+                read: 'reading', write: 'writing', swim: 'swimming', run: 'running',
+                cook: 'cooking', draw: 'drawing', sing: 'singing', dance: 'dancing',
+                play: 'playing', watch: 'watching', listen: 'listening', travel: 'travelling',
+                hike: 'hiking', cycle: 'cycling', fish: 'fishing', game: 'gaming'
+            };
+            const lower = word.toLowerCase();
+            return map[lower] || (lower.endsWith('e') ? lower.slice(0, -1) + 'ing' : lower + 'ing');
+        }
 
-      const keywordsStr = userKeywords.join(" and ");
-      const mainKeyword = userKeywords[0];     function toGerund(word) {       const map = {read:'reading',write:'writing',swim:'swimming',run:'running',cook:'cooking',draw:'drawing',sing:'singing',dance:'dancing',play:'playing',watch:'watching',listen:'listening',travel:'travelling',hike:'hiking',cycle:'cycling',fish:'fishing',game:'gaming'};       return map[word.toLowerCase()] || (word.endsWith('e') ? word.slice(0,-1)+'ing' : word+'ing');     }     const gerundMain = toGerund(mainKeyword);     const gerundStr = userKeywords.map(toGerund).join(', ');
+        function generateScript() {
+            const level = document.getElementById('currentLevel').value;
+            const topic = document.getElementById('scriptTopic').value || "this topic";
+            const rawKeywords = document.getElementById('keywords').value;
+            const userKeywords = rawKeywords.split(',').map(k => k.trim()).filter(k => k !== "");
 
-      let p1, p2, p3, tip;
+            if (userKeywords.length === 0) {
+                alert("Please share a few keywords to make your script unique!");
+                return;
+            }
 
-      if (level === "5") {
-        p1 = `I really like ${gerundMain}. I usually ${mainKeyword} when I have free time. It makes me feel relaxed and happy.`;
-        p2 = `I want to talk about ${gerundMain}. I started ${gerundMain} a few years ago and I really enjoy it. I also like ${gerundStr}. In the future, I want to get better at it.`;
-        p3 = `I think ${gerundMain} is important for many people. It can help us relax and feel better. I really recommend it.`;
-        tip = "Focus on fluency first! Don't worry about being fancy. Keep your sentences simple but keep talking. You've got this!";
-      } else if (level === "6") {
-        p1 = `To be honest, I'm quite passionate about ${topic}. I've been using ${mainKeyword} for a while now, and it's become an essential part of my routine.`;
-        p2 = `If I had to describe ${topic}, I'd start by mentioning ${mainKeyword}. It's played a significant role in my experience. I particularly enjoy the ${keywordsStr} aspect of it. It's not just a hobby; it's a way to unwind after a stressful day.`;
-        p3 = `From a broader perspective, ${topic} has evolved significantly. While ${mainKeyword} is beneficial, we have to consider the impact of ${userKeywords[1] || 'modern changes'} on society.`;
-        tip = "Try using 'connector' words like 'However', 'Moreover', and 'On the other hand'. It's like adding seasoning to your English—makes it much tastier for the examiner!";
-      } else {
-        p1 = `That's a fascinating question. ${topic.charAt(0).toUpperCase() + topic.slice(1)} has always intrigued me, particularly regarding ${mainKeyword}. I find that it offers a unique perspective on modern life.`;
-        p2 = `I'd like to delve into the world of ${topic}. The cornerstone of my interest is undoubtedly ${mainKeyword}. When you combine that with ${keywordsStr}, you get a truly multifaceted experience. It's essentially a psychological anchor for me, allowing for both creative expression and cognitive stimulation.`;
-        p3 = `One could argue that the proliferation of ${topic} is a double-edged sword. While the integration of ${mainKeyword} has catalyzed progress, we mustn't overlook the nuanced challenges posed by ${userKeywords[1] || 'systemic factors'}. It's a complex interplay between innovation and tradition.`;
-        tip = "You're at the 'Sophisticated' level now. Use 'hedging' language like 'It could be argued that...' or 'One might suggest...'. It shows you understand the complexity of the world. Also, don't forget to smile—it confuses the examiner into giving you a higher score!";
-      }
+            const mainKeyword = userKeywords[0];
+            const keywordsStr = userKeywords.join(" and ");
+            const gerundMain = toGerund(mainKeyword);
+            const gerundStr = userKeywords.map(toGerund).join(', ');
 
-      document.getElementById('part1Result').textContent = p1;
-      document.getElementById('part2Result').textContent = p2;
-      document.getElementById('part3Result').textContent = p3;
-      document.getElementById('tipContent').textContent = tip;
-      document.getElementById('levelBadge').textContent = "Target: Band " + (parseInt(level) + 1.0).toFixed(1);
+            let p1, p2, p3, tip;
 
-      nextStep(3);
-    }
-  </script>
+            if (level === "5") {
+                p1 = `I really like ${gerundMain}. I usually ${mainKeyword} when I have free time. It makes me feel relaxed and happy.`;
+                p2 = `I want to talk about ${gerundMain}. I started ${gerundMain} a few years ago and I really enjoy it. I also like ${gerundStr}. In the future, I want to get better at it.`;
+                p3 = `I think ${gerundMain} is important for many people. It can help us relax and feel better. I really recommend it.`;
+                tip = "Focus on fluency first! Don't worry about being fancy. Keep your sentences simple but keep talking. You've got this!";
+            } else if (level === "6") {
+                p1 = `To be honest, I'm quite passionate about ${topic}. I've been into ${gerundMain} for a while now, and it's become an essential part of my routine.`;
+                p2 = `If I had to describe ${topic}, I'd start by mentioning ${gerundMain}. It's played a significant role in my experience. I particularly enjoy the ${gerundStr} aspect of it. It's not just a hobby; it's a way to unwind after a stressful day.`;
+                p3 = `From a broader perspective, ${topic} has evolved significantly lately. While ${gerundMain} is beneficial, we have to consider how it affects our modern lifestyle.`;
+                tip = "Try using 'connector' words like 'However', 'Moreover', and 'On the other hand'. It adds 'seasoning' to your English for the examiner!";
+            } else {
+                p1 = `That's a fascinating question. ${topic.charAt(0).toUpperCase() + topic.slice(1)} has always intrigued me, particularly regarding ${gerundMain}. I find that it offers a unique perspective on modern life.`;
+                p2 = `I'd like to delve into the world of ${topic}. The cornerstone of my interest is undoubtedly ${gerundMain}. When you combine that with ${gerundStr}, you get a truly multifaceted experience. It acts as a psychological anchor for me.`;
+                p3 = `One could argue that the proliferation of ${topic} is a double-edged sword. While the integration of ${gerundMain} has catalyzed progress, we mustn't overlook the nuanced challenges posed by systemic factors.`;
+                tip = "You're at the 'Sophisticated' level. Use 'hedging' language like 'It could be argued that...' or 'One might suggest...'. It shows you understand complexity!";
+            }
+
+            document.getElementById('part1Result').textContent = `"${p1}"`;
+            document.getElementById('part2Result').textContent = `"${p2}"`;
+            document.getElementById('part3Result').textContent = `"${p3}"`;
+            document.getElementById('tipContent').textContent = tip;
+            document.getElementById('levelBadge').textContent = "Target: Band " + (parseInt(level) + 1.0).toFixed(1);
+            
+            nextStep(3);
+        }
+    </script>
 </body>
 </html>
