@@ -117,14 +117,14 @@
       }
 
       const keywordsStr = userKeywords.join(" and ");
-      const mainKeyword = userKeywords[0];
+      const mainKeyword = userKeywords[0];     function toGerund(word) {       const map = {read:'reading',write:'writing',swim:'swimming',run:'running',cook:'cooking',draw:'drawing',sing:'singing',dance:'dancing',play:'playing',watch:'watching',listen:'listening',travel:'travelling',hike:'hiking',cycle:'cycling',fish:'fishing',game:'gaming'};       return map[word.toLowerCase()] || (word.endsWith('e') ? word.slice(0,-1)+'ing' : word+'ing');     }     const gerundMain = toGerund(mainKeyword);     const gerundStr = userKeywords.map(toGerund).join(', ');
 
       let p1, p2, p3, tip;
 
       if (level === "5") {
-        p1 = `I really like ${topic}. I usually use my ${mainKeyword} when I have free time. It makes me feel happy.`;
-        p2 = `I want to talk about ${topic}. First, I found out about it because of ${mainKeyword}. It was very interesting. Also, I use ${keywordsStr} every week. In the future, I want to learn more.`;
-        p3 = `I think ${topic} is important for many people. Using ${mainKeyword} can help us improve our lives easily.`;
+        p1 = `I really like ${gerundMain}. I usually ${gerundMain} when I have free time. It makes me feel relaxed and happy.`;
+        p2 = `I want to talk about ${gerundMain}. I started ${gerundMain} a few years ago and I really enjoy it. I also like ${gerundStr}. In the future, I want to get better at it.`;
+        p3 = `I think ${gerundMain} is important for many people. It can help us relax and feel better. I really recommend it.`;
         tip = "Focus on fluency first! Don't worry about being fancy. Keep your sentences simple but keep talking. You've got this!";
       } else if (level === "6") {
         p1 = `To be honest, I'm quite passionate about ${topic}. I've been using ${mainKeyword} for a while now, and it's become an essential part of my routine.`;
