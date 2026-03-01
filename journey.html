@@ -15,7 +15,7 @@
             --act-blue: #3A86FF;
             --act-red: #E63946;
         }
-
+        
         body {
             background: linear-gradient(to bottom, var(--bg-dark), var(--bg-slate));
             color: var(--text-offwhite);
@@ -23,7 +23,7 @@
             overflow-x: hidden;
             margin: 0;
         }
-
+        
         /* Film Grain Effect */
         body::after {
             content: "";
@@ -34,7 +34,7 @@
             pointer-events: none;
             z-index: 9999;
         }
-
+        
         .cinematic-vignette {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -42,7 +42,7 @@
             pointer-events: none;
             z-index: 100;
         }
-
+        
         .serif { font-family: 'Playfair Display', serif; }
         
         /* Act Section Styling */
@@ -55,7 +55,7 @@
             scroll-snap-align: center;
             padding: 0 10%;
         }
-
+        
         .act-content {
             z-index: 10;
             max-width: 800px;
@@ -63,12 +63,12 @@
             transform: translateY(30px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
+        
         .act-content.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
+        
         .act-bg-parallax {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -79,20 +79,20 @@
             z-index: 1;
             transition: transform 0.1s ease-out;
         }
-
+        
         .insight-text {
             font-size: 1.25rem;
             font-style: italic;
             color: rgba(242, 239, 234, 0.8);
-            border-left: 2px solid var(--accent-color, var(--act-gold));
+            border-left: 2px solid var(--act-gold);
             padding-left: 1.5rem;
             margin-top: 2rem;
         }
-
+        
         /* Act IV Pivot Specifics */
         .act-iv { background: #000; }
         .act-iv .insight-text { color: #fff; border-color: #fff; }
-
+        
         /* Full Arc Reveal Overlay */
         #final-reveal {
             position: fixed;
@@ -104,158 +104,177 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 2rem;
         }
-
-        .arc-node {
-            width: 12px; height: 12px;
-            border-radius: 50%;
-            background: var(--text-offwhite);
-            position: absolute;
-            transition: all 0.5s ease;
+        
+        #final-reveal.active { display: flex; }
+        
+        .reveal-text {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .reveal-text.visible { opacity: 1; }
+        
+        @media (max-width: 768px) {
+            .reveal-text { font-size: 1.5rem; }
+            .act-container { padding: 0 5%; }
         }
     </style>
 </head>
-<body class="snap-y snap-mandatory">
-    <div class="cinematic-vignette"></div>
+<body>
 
-    <!-- Title Screen -->
-    <section class="act-container snap-center">
-        <div class="text-center act-content visible">
-            <h1 class="text-7xl serif font-bold tracking-widest mb-4">CLYDE AGNEW</h1>
-            <p class="text-xl tracking-[0.5em] opacity-60 uppercase">Education Driven by Empathy Insight</p>
-            <div class="mt-20 animate-bounce opacity-30">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </div>
-        </div>
-    </section>
+<div class="cinematic-vignette"></div>
 
-    <!-- ACT I: Early Foundations -->
-    <section class="act-container snap-center" style="--accent-color: var(--act-gold)">
-        <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1523050853051-f756675d846f?auto=format&fit=crop&q=80')"></div>
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act I — 2008–2010</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Early Foundations</h2>
-            <p class="text-lg opacity-80">Nelson Mandela University / Traumerei</p>
-            <p class="insight-text">Where empathy met discipline.</p>
-        </div>
-    </section>
-
-    <!-- ACT II: Corporate Systems -->
-    <section class="act-container snap-center" style="--accent-color: var(--act-blue)">
-        <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80')"></div>
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act II — 2011–2013</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Corporate Systems</h2>
-            <p class="text-lg opacity-80">CCS IT Training College</p>
-            <p class="insight-text">Structure sharpened adaptability.</p>
-        </div>
-    </section>
-
-    <!-- ACT III: Confidence Performance -->
-    <section class="act-container snap-center" style="--accent-color: var(--act-red)">
-        <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80')"></div>
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act III — 2013–2014</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Confidence Performance</h2>
-            <p class="text-lg opacity-80">Queen of Hearts / Performance Art</p>
-            <p class="insight-text">Presence is trained, not inherited.</p>
-        </div>
-    </section>
-
-    <!-- ACT IV: Academic Resilience (THE PIVOT) -->
-    <section class="act-container snap-center act-iv" style="--accent-color: #fff">
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act IV — 2015</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Academic Resilience</h2>
-            <p class="text-lg opacity-80">The Turning Point</p>
-            <p class="insight-text text-white">Support transforms fear into growth.</p>
-        </div>
-    </section>
-
-    <!-- ACT V: Finding the Educator -->
-    <section class="act-container snap-center" style="--accent-color: #A8DADC">
-        <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80')"></div>
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act V — 2016–2018</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Finding the Educator</h2>
-            <p class="text-lg opacity-80">Pangea Outsourcing</p>
-            <p class="insight-text">Purpose emerges in quiet persistence.</p>
-        </div>
-    </section>
-
-    <!-- ACT VI: Seniority Global Impact -->
-    <section class="act-container snap-center" style="--accent-color: #457B9D">
-        <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80')"></div>
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act VI — 2017–2022</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Seniority Global Impact</h2>
-            <p class="text-lg opacity-80">Vietnam / IELTS Mastery</p>
-            <p class="insight-text">Mastery is measured by outcomes.</p>
-        </div>
-    </section>
-
-    <!-- ACT VII: Integration Purpose -->
-    <section class="act-container snap-center" id="last-act" style="--accent-color: #F1FAEE">
-        <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80')"></div>
-        <div class="act-content">
-            <span class="text-sm tracking-widest uppercase opacity-50">Act VII — 2022–Present</span>
-            <h2 class="text-5xl serif font-bold mt-2 mb-4">Integration Purpose</h2>
-            <p class="text-lg opacity-80">Istoria Education</p>
-            <p class="insight-text">Insight now drives influence.</p>
-        </div>
-    </section>
-
-    <!-- FINAL OVERLAY REVEAL -->
-    <div id="final-reveal">
-        <div class="max-w-2xl px-8">
-            <h3 class="text-4xl serif leading-loose opacity-0 transition-opacity duration-1000" id="final-text-1">Empathy created the foundation.</h3>
-            <h3 class="text-4xl serif leading-loose opacity-0 transition-opacity duration-1000" id="final-text-2">Structure built the system.</h3>
-            <h3 class="text-4xl serif leading-loose opacity-0 transition-opacity duration-1000" id="final-text-3">Experience shaped the voice.</h3>
-            <h3 class="text-4xl serif leading-loose opacity-0 transition-opacity duration-1000 text-indigo-400 font-bold" id="final-text-4">Insight drives the outcome.</h3>
-            
-            <button onclick="location.reload()" class="mt-12 text-sm uppercase tracking-widest opacity-30 hover:opacity-100 transition-opacity">Replay Journey</button>
-        </div>
+<!-- Hero Title Section -->
+<div class="act-container" style="height: 100vh;">
+    <div class="act-content visible text-center">
+        <h1 class="serif text-7xl font-bold tracking-wide mb-6">CLYDE AGNEW</h1>
+        <p class="text-xl tracking-widest uppercase opacity-70">Education Driven by Empathy &amp; Insight</p>
     </div>
+</div>
 
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
-    <script>
-        // Intersection Observer for Scroll Reveals
-        const observerOptions = { threshold: 0.5 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelector('.act-content').classList.add('visible');
-                    
-                    // Trigger final reveal logic if it's the last section
-                    if (entry.target.id === 'last-act') {
-                        setTimeout(triggerFinalReveal, 4000);
-                    }
-                }
-            });
-        }, observerOptions);
+<!-- Act I -->
+<div class="act-container">
+    <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920');"></div>
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act I — 2008–2010</p>
+        <h2 class="serif text-5xl font-bold mb-4">Early Foundations</h2>
+        <p class="text-lg mb-4">Nelson Mandela University / Traumerei</p>
+        <div class="insight-text">Where empathy met discipline.</div>
+    </div>
+</div>
 
-        document.querySelectorAll('.act-container').forEach(section => {
-            observer.observe(section);
-        });
+<!-- Act II -->
+<div class="act-container">
+    <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920');"></div>
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act II — 2011–2013</p>
+        <h2 class="serif text-5xl font-bold mb-4">Corporate Systems</h2>
+        <p class="text-lg mb-4">CCS IT Training College</p>
+        <div class="insight-text">Structure sharpened adaptability.</div>
+    </div>
+</div>
 
-        // Parallax Effect for Backgrounds
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            document.querySelectorAll('.act-bg-parallax').forEach(bg => {
-                const speed = 0.5;
-                bg.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
-            });
-        });
+<!-- Act III -->
+<div class="act-container">
+    <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=1920');"></div>
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act III — 2013–2014</p>
+        <h2 class="serif text-5xl font-bold mb-4">Confidence &amp; Performance</h2>
+        <p class="text-lg mb-4">Queen of Hearts / Performance Art</p>
+        <div class="insight-text">Presence is trained, not inherited.</div>
+    </div>
+</div>
 
-        function triggerFinalReveal() {
-            const overlay = document.getElementById('final-reveal');
-            overlay.style.display = 'flex';
+<!-- Act IV (Pivot) -->
+<div class="act-container act-iv">
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act IV — 2015</p>
+        <h2 class="serif text-5xl font-bold mb-4">Academic Resilience</h2>
+        <p class="text-lg mb-4">The Turning Point</p>
+        <div class="insight-text">Support transforms fear into growth.</div>
+    </div>
+</div>
+
+<!-- Act V -->
+<div class="act-container">
+    <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920');"></div>
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act V — 2016–2018</p>
+        <h2 class="serif text-5xl font-bold mb-4">Finding the Educator</h2>
+        <p class="text-lg mb-4">Pangea Outsourcing</p>
+        <div class="insight-text">Purpose emerges in quiet persistence.</div>
+    </div>
+</div>
+
+<!-- Act VI -->
+<div class="act-container">
+    <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1496128858413-b36217c2ce36?w=1920');"></div>
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act VI — 2017–2022</p>
+        <h2 class="serif text-5xl font-bold mb-4">Seniority &amp; Global Impact</h2>
+        <p class="text-lg mb-4">Vietnam / IELTS Mastery</p>
+        <div class="insight-text">Mastery is measured by outcomes.</div>
+    </div>
+</div>
+
+<!-- Act VII -->
+<div class="act-container" id="last-act">
+    <div class="act-bg-parallax" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920');"></div>
+    <div class="act-content">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Act VII — 2022–Present</p>
+        <h2 class="serif text-5xl font-bold mb-4">Integration &amp; Purpose</h2>
+        <p class="text-lg mb-4">Istoria Education</p>
+        <div class="insight-text">Insight now drives influence.</div>
+    </div>
+</div>
+
+<!-- Final Reveal Overlay -->
+<div id="final-reveal">
+    <div class="reveal-text" id="final-text-1">Empathy created the foundation.</div>
+    <div class="reveal-text" id="final-text-2">Structure built the system.</div>
+    <div class="reveal-text" id="final-text-3">Experience shaped the voice.</div>
+    <div class="reveal-text" id="final-text-4">Insight drives the outcome.</div>
+    <button onclick="replayJourney()" class="mt-8 px-6 py-3 bg-white text-black rounded-lg uppercase tracking-widest hover:bg-gray-200 transition cursor-pointer">Replay Journey</button>
+</div>
+
+<script>
+// Intersection Observer for Scroll Reveals
+const observerOptions = { threshold: 0.5 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const content = entry.target.querySelector('.act-content');
+            if (content) content.classList.add('visible');
             
-            setTimeout(() => document.getElementById('final-text-1').classList.remove('opacity-0'), 1000);
-            setTimeout(() => document.getElementById('final-text-2').classList.remove('opacity-0'), 2500);
-            setTimeout(() => document.getElementById('final-text-3').classList.remove('opacity-0'), 4000);
-            setTimeout(() => document.getElementById('final-text-4').classList.remove('opacity-0'), 5500);
+            // Trigger final reveal logic if it's the last section
+            if (entry.target.id === 'last-act') {
+                setTimeout(triggerFinalReveal, 3000);
+            }
         }
-    </script>
+    });
+}, observerOptions);
+
+document.querySelectorAll('.act-container').forEach(section => {
+    observer.observe(section);
+});
+
+// Parallax Effect for Backgrounds
+window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    document.querySelectorAll('.act-bg-parallax').forEach(bg => {
+        const speed = 0.3;
+        bg.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+});
+
+function triggerFinalReveal() {
+    const overlay = document.getElementById('final-reveal');
+    overlay.classList.add('active');
+    
+    setTimeout(() => document.getElementById('final-text-1').classList.add('visible'), 500);
+    setTimeout(() => document.getElementById('final-text-2').classList.add('visible'), 1500);
+    setTimeout(() => document.getElementById('final-text-3').classList.add('visible'), 2500);
+    setTimeout(() => document.getElementById('final-text-4').classList.add('visible'), 3500);
+}
+
+function replayJourney() {
+    const overlay = document.getElementById('final-reveal');
+    overlay.classList.remove('active');
+    
+    // Reset reveal text visibility
+    document.querySelectorAll('.reveal-text').forEach(text => {
+        text.classList.remove('visible');
+    });
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
 </body>
 </html>
