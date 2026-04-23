@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clyde Agnew | Psychology-Driven ESL & IELTS Specialist</title>
   <meta name="description" content="Senior ESL & IELTS Specialist helping ambitious professionals break mental barriers and speak with authority." />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -36,7 +36,9 @@
     .gradient-text {
       background: linear-gradient(135deg, #6366F1, #A855F7, #F43F5E);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
+      color: transparent;
     }
     .mesh-gradient {
       position: fixed;
@@ -48,6 +50,7 @@
     /* Mobile Menu Toggle */
     #mobile-menu {
       display: none;
+      flex-direction: column;
     }
     #mobile-menu.active {
       display: flex;
@@ -64,7 +67,7 @@
         <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white italic">K</div>
         <span class="font-bold text-xl tracking-tight text-white">knight<span class="text-indigo-400">School</span></span>
       </div>
-      
+
       <!-- Desktop Menu -->
       <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
         <a href="#about" class="hover:text-white transition">The Method</a>
@@ -82,7 +85,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden flex-col bg-slate-950 border-t border-white/5 p-6 gap-4 md:hidden">
+    <div id="mobile-menu" class="hidden bg-slate-950 border-t border-white/5 p-6 gap-4 md:hidden">
       <a href="#about" onclick="toggleMenu()" class="text-slate-400 hover:text-white">The Method</a>
       <a href="#labs" onclick="toggleMenu()" class="text-slate-400 hover:text-white">Labs</a>
       <a href="journey.html" onclick="toggleMenu()" class="text-slate-400 hover:text-white">The Journey</a>
@@ -155,7 +158,7 @@
       <!-- Heart/Bio Card -->
       <div class="md:col-span-2 bento-card p-8 flex flex-col md:flex-row gap-8 items-center">
         <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-500/30 flex-shrink-0">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" class="w-full h-full object-cover" alt="Clyde Agnew" />
+          <img src="https://avatars.githubusercontent.com/u/235164267?v=4" class="w-full h-full object-cover" alt="Clyde Agnew" />
         </div>
         <div>
           <h3 class="text-2xl font-bold mb-2">The Human Element</h3>
@@ -222,8 +225,8 @@
     <div>© 2026 knightSchool — Clyde Agnew. All rights reserved.</div>
     <div class="flex gap-8">
       <a href="mailto:clyde.agnew@gmail.com" class="hover:text-white transition">Contact</a>
-      <a href="https://linkedin.com/in/clydeagnew" target="_blank" class="hover:text-white transition">LinkedIn</a>
-      <a href="https://github.com/clydeagnew-max" target="_blank" class="hover:text-white transition">GitHub</a>
+      <a href="https://linkedin.com/in/clydeagnew" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">LinkedIn</a>
+      <a href="https://github.com/clydeagnew-max" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub</a>
     </div>
   </footer>
 
