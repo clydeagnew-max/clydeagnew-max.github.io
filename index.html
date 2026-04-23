@@ -1,199 +1,238 @@
 <!DOCTYPE html>
-<html lang=\"en\">
+<html lang="en">
 <head>
-    <meta charset=\"UTF-8\" />
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-    <title>Clyde Agnew | Psychology-Driven ESL & IELTS Specialist</title>
-    <meta name=\"description\" content=\"Senior ESL & IELTS Specialist helping ambitious professionals break mental barriers and speak with authority.\" />
-    <script src=\"https://cdn.tailwindcss.com\"></script>
-    <link href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap\" rel=\"stylesheet\" />
-    <style>
-        :root {
-            --bg-obsidian: #020617;
-            --accent-indigo: #6366F1;
-            --accent-rose: #F43F5E;
-            --slate-400: #94A3B8;
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-obsidian);
-            color: white;
-            scroll-behavior: smooth;
-        }
-        .playfair { font-family: 'Playfair Display', serif; }
-        .bento-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .bento-card:hover {
-            border-color: var(--accent-indigo);
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
-            transform: translateY(-4px);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #6366F1, #A855F7, #F43F5E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .mesh-gradient {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.08) 0%, transparent 40%);
-            z-index: -1;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clyde Agnew | Psychology-Driven ESL & IELTS Specialist</title>
+  <meta name="description" content="Senior ESL & IELTS Specialist helping ambitious professionals break mental barriers and speak with authority." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-obsidian: #020617;
+      --accent-indigo: #6366F1;
+      --accent-rose: #F43F5E;
+      --slate-400: #94A3B8;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-obsidian);
+      color: white;
+      scroll-behavior: smooth;
+    }
+    .playfair { font-family: 'Playfair Display', serif; }
+    .bento-card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bento-card:hover {
+      border-color: var(--accent-indigo);
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+      transform: translateY(-4px);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366F1, #A855F7, #F43F5E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .mesh-gradient {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.08) 0%, transparent 40%);
+      z-index: -1;
+    }
+    /* Mobile Menu Toggle */
+    #mobile-menu {
+      display: none;
+    }
+    #mobile-menu.active {
+      display: flex;
+    }
+  </style>
 </head>
-<body class=\"min-h-screen selection:bg-indigo-500/30\">
-    <div class=\"mesh-gradient\"></div>
+<body class="min-h-screen selection:bg-indigo-500/30">
+  <div class="mesh-gradient"></div>
 
-    <!-- Navigation -->
-    <nav class=\"sticky top-0 z-50 border-b border-white/5 bg-slate-950/60 backdrop-blur-xl\">
-        <div class=\"max-w-7xl mx-auto px-6 py-4 flex items-center justify-between\">
-            <div class=\"flex items-center gap-2\">
-                <div class=\"w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white italic\">K</div>
-                <span class=\"font-bold text-xl tracking-tight text-white\">knight<span class=\"text-indigo-400\">School</span></span>
-            </div>
-            <div class=\"hidden md:flex gap-8 text-sm font-medium text-slate-400\">
-                <a href=\"#about\" class=\"hover:text-white transition\">The Method</a>
-                <a href=\"#labs\" class=\"hover:text-white transition\">Labs</a>
-                <a href=\"#story\" class=\"hover:text-white transition\">The Journey</a>
-                <a href=\"mailto:clyde.agnew@gmail.com\" class=\"text-indigo-400 hover:text-indigo-300\">Start Project</a>
-            </div>
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/60 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white italic">K</div>
+        <span class="font-bold text-xl tracking-tight text-white">knight<span class="text-indigo-400">School</span></span>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+        <a href="#about" class="hover:text-white transition">The Method</a>
+        <a href="#labs" class="hover:text-white transition">Labs</a>
+        <a href="journey.html" class="hover:text-white transition">The Journey</a>
+        <a href="mailto:clyde.agnew@gmail.com" class="text-indigo-400 hover:text-indigo-300">Start Project</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="toggleMenu()" class="md:hidden text-white p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden flex-col bg-slate-950 border-t border-white/5 p-6 gap-4 md:hidden">
+      <a href="#about" onclick="toggleMenu()" class="text-slate-400 hover:text-white">The Method</a>
+      <a href="#labs" onclick="toggleMenu()" class="text-slate-400 hover:text-white">Labs</a>
+      <a href="journey.html" onclick="toggleMenu()" class="text-slate-400 hover:text-white">The Journey</a>
+      <a href="mailto:clyde.agnew@gmail.com" class="text-indigo-400 font-bold pt-2">Start Project</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="about" class="max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-8">
+      <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+      Where Psychology Meets Performance
+    </div>
+    <h1 class="playfair text-5xl md:text-8xl font-bold leading-[1.05] mb-8 max-w-5xl">
+      Master English for the <br />
+      <span class="gradient-text italic">Global Stage.</span>
+    </h1>
+    <p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-12">
+      Senior ESL & IELTS Specialist helping ambitious professionals break mental barriers, build structural fluency, and speak with the authority of a native expert.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#labs" class="px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-slate-200 transition shadow-lg shadow-white/5">Explore the Labs</a>
+      <a href="journey.html" class="px-8 py-4 bg-slate-900 border border-white/10 text-white font-bold rounded-2xl hover:bg-slate-800 transition">Experience the Journey</a>
+    </div>
+  </section>
+
+  <!-- Bento Grid Labs -->
+  <section id="labs" class="max-w-7xl mx-auto px-6 py-24">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+      <div class="max-w-xl text-left">
+        <h2 class="playfair text-4xl font-bold mb-4">The Innovation Lab</h2>
+        <p class="text-slate-400 leading-relaxed">Custom-built tools designed to reduce learner anxiety and accelerate Band score growth through personalized cognitive practice.</p>
+      </div>
+      <div class="text-indigo-400 font-bold text-sm tracking-widest uppercase">Phase A — Live Now</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Tool 1 -->
+      <a href="ielts-generator.html" class="md:col-span-2 bento-card p-8 flex flex-col justify-between min-h-[320px] group relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition text-8xl">⚡</div>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">⚡</div>
+          <h3 class="text-3xl font-bold mb-4">IELTS Question Generator</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Instantly create high-probability speaking and writing questions for any topic, powered by real exam data.</p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id=\"about\" class=\"max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center\">
-        <div class=\"inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-8\">
-            <span class=\"w-2 h-2 rounded-full bg-indigo-400 animate-pulse\"></span>
-            Where Psychology Meets Performance
+        <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm">
+          Open Lab <span class="group-hover:translate-x-1 transition">→</span>
         </div>
-        <h1 class=\"playfair text-5xl md:text-8xl font-bold leading-[1.05] mb-8 max-w-5xl\">
-            Master English for the <br />
-            <span class=\"gradient-text italic\">Global Stage.</span>
-        </h1>
-        <p class=\"text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-12\">
-            Senior ESL & IELTS Specialist helping ambitious professionals break mental barriers, build structural fluency, and speak with the authority of a native expert.
-        </p>
-        <div class=\"flex flex-col sm:flex-row gap-4\">
-            <a href=\"#labs\" class=\"px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-slate-200 transition shadow-lg shadow-white/5\">Explore the Labs</a>
-            <a href=\"#story\" class=\"px-8 py-4 bg-slate-900 border border-white/10 text-white font-bold rounded-2xl hover:bg-slate-800 transition\">My Story</a>
+      </a>
+
+      <!-- Tool 2 -->
+      <a href="ielts-script-builder.html" class="bento-card p-8 flex flex-col justify-between group">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-rose-500/20 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">🖋️</div>
+          <h3 class="text-2xl font-bold mb-4">Script Builder</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Build response scripts tailored to your current Band level and vocabulary.</p>
         </div>
-    </section>
-
-    <!-- Bento Grid Labs -->
-    <section id=\"labs\" class=\"max-w-7xl mx-auto px-6 py-24\">
-        <div class=\"flex flex-col md:flex-row justify-between items-end gap-6 mb-16\">
-            <div class=\"max-w-xl text-left\">
-                <h2 class=\"playfair text-4xl font-bold mb-4\">The Innovation Lab</h2>
-                <p class=\"text-slate-400 leading-relaxed\">Custom-built tools designed to reduce learner anxiety and accelerate Band score growth through personalized cognitive practice.</p>
-            </div>
-            <div class=\"text-indigo-400 font-bold text-sm tracking-widest uppercase\">Phase A — Live Now</div>
+        <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
+          Build <span class="group-hover:translate-x-1 transition">→</span>
         </div>
+      </a>
 
-        <div class=\"grid grid-cols-1 md:grid-cols-3 gap-6\">
-            <!-- Tool 1 -->
-            <a href=\"ielts-generator.html\" class=\"md:col-span-2 bento-card p-8 flex flex-col justify-between min-h-[320px] group relative overflow-hidden\">
-                <div class=\"absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition text-8xl\">⚡</div>
-                <div>
-                    <div class=\"w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition\">⚡</div>
-                    <h3 class=\"text-3xl font-bold mb-4\">IELTS Question Generator</h3>
-                    <p class=\"text-slate-400 leading-relaxed max-w-md\">Instantly create high-probability speaking and writing questions for any topic, powered by real exam data.</p>
-                </div>
-                <div class=\"flex items-center gap-2 text-indigo-400 font-bold text-sm\">
-                    Open Lab <span class=\"group-hover:translate-x-1 transition\">→</span>
-                </div>
-            </a>
+      <!-- Stats Card -->
+      <div class="md:col-span-1 bento-card p-8 bg-indigo-600/10 border-indigo-500/30">
+        <div class="text-4xl font-black text-white mb-2">10+</div>
+        <div class="text-xs uppercase tracking-widest text-indigo-400 mb-6">Years of Impact</div>
+        <p class="text-slate-400 text-sm leading-relaxed">From Pretoria to Vietnam, helping professionals master high-stakes communication.</p>
+      </div>
 
-            <!-- Tool 2 -->
-            <a href=\"ielts-script-builder.html\" class=\"bento-card p-8 flex flex-col justify-between group\">
-                <div>
-                    <div class=\"w-12 h-12 rounded-xl bg-rose-500/20 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition\">🖋️</div>
-                    <h3 class=\"text-2xl font-bold mb-4\">Script Builder</h3>
-                    <p class=\"text-slate-400 leading-relaxed text-sm\">Build response scripts tailored to your current Band level and vocabulary.</p>
-                </div>
-                <div class=\"flex items-center gap-2 text-rose-400 font-bold text-sm\">
-                    Build <span class=\"group-hover:translate-x-1 transition\">→</span>
-                </div>
-            </a>
-
-            <!-- Stats Card -->
-            <div class=\"md:col-span-1 bento-card p-8 bg-indigo-600/10 border-indigo-500/30\">
-                <div class=\"text-4xl font-black text-white mb-2\">10+</div>
-                <div class=\"text-xs uppercase tracking-widest text-indigo-400 mb-6\">Years of Impact</div>
-                <p class=\"text-slate-400 text-sm leading-relaxed\">From Pretoria to Vietnam, helping professionals master high-stakes communication.</p>
-            </div>
-
-            <!-- Heart/Bio Card -->
-            <div class=\"md:col-span-2 bento-card p-8 flex flex-col md:flex-row gap-8 items-center\">
-                <div class=\"w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-500/30 flex-shrink-0\">
-                    <img src=\"profile.jpg.jpg\" class=\"w-full h-full object-cover\" alt=\"Clyde Agnew\" />
-                </div>
-                <div>
-                    <h3 class=\"text-2xl font-bold mb-2\">The Human Element</h3>
-                    <p class=\"text-slate-400 text-sm leading-relaxed\">I believe fluency is a psychological shift. My methodology focuses on removing the mental blocks that hold you back from speaking with true authority.</p>
-                </div>
-            </div>
+      <!-- Heart/Bio Card -->
+      <div class="md:col-span-2 bento-card p-8 flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-500/30 flex-shrink-0">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" class="w-full h-full object-cover" alt="Clyde Agnew" />
         </div>
-    </section>
-
-    <!-- Story/Journey Section -->
-    <section id=\"story\" class=\"max-w-7xl mx-auto px-6 py-24\">
-        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-16 items-center\">
-            <div class=\"order-2 md:order-1\">
-                <div class=\"relative rounded-[2.5rem] overflow-hidden aspect-[4/5] md:aspect-square shadow-2xl group\">
-                    <img src=\"business-training.jpg.jpg\" alt=\"Clyde Leading Training\" class=\"w-full h-full object-cover group-hover:scale-105 transition duration-1000\" />
-                    <div class=\"absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-10 flex flex-col justify-end\">
-                        <p class=\"text-white text-xl font-bold italic mb-2\">“Presence is trained, not inherited.”</p>
-                        <p class=\"text-slate-400 text-sm\">Leading a corporate session in Vietnam</p>
-                    </div>
-                </div>
-            </div>
-            <div class=\"order-1 md:order-2 space-y-8\">
-                <div>
-                    <h2 class=\"playfair text-5xl font-bold mb-6\">The knight's Tale</h2>
-                    <p class=\"text-slate-400 text-lg leading-relaxed\">My journey hasn’t just been about teaching grammar — it’s been about understanding the human behind the language.</p>
-                </div>
-                <div class=\"space-y-4\">
-                    <div class=\"flex items-start gap-4\">
-                        <div class=\"w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] mt-1\">01</div>
-                        <p class=\"text-slate-300\">Founded <span class=\"text-white font-medium\">knightSchool</span> to bridge the gap between academic English and professional authority.</p>
-                    </div>
-                    <div class=\"flex items-start gap-4\">
-                        <div class=\"w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] mt-1\">02</div>
-                        <p class=\"text-slate-300\">Specialize in <span class=\"text-white font-medium\">IELTS & Cambridge</span> pathways for high-performing professionals.</p>
-                    </div>
-                </div>
-                <div class=\"pt-8\">
-                    <a href=\"journey.html\" class=\"inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-indigo-500/10 text-indigo-400 font-bold hover:bg-indigo-500/20 transition group\">
-                        Experience the Cinematic Journey
-                        <span class=\"group-hover:translate-x-1 transition\">→</span>
-                    </a>
-                </div>
-            </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-2">The Human Element</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">I believe fluency is a psychological shift. My methodology focuses on removing the mental blocks that hold you back from speaking with true authority.</p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Visual Timeline Grid -->
-        <div class=\"grid grid-cols-2 md:grid-cols-4 gap-4 mt-24\">
-            <img src=\"act1-early-foundations (2).png\" class=\"rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5\" alt=\"Foundations\" />
-            <img src=\"act4-academic-resilience.png\" class=\"rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5\" alt=\"Resilience\" />
-            <img src=\"act6-vietnam-classroom.png\" class=\"rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5\" alt=\"Impact\" />
-            <img src=\"act7-real-world-impact.png\" class=\"rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5\" alt=\"Present\" />
+  <!-- Story/Journey Section -->
+  <section id="story" class="max-w-7xl mx-auto px-6 py-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="order-2 md:order-1">
+        <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/5] md:aspect-square shadow-2xl group">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800" alt="Clyde Leading Training" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-10 flex flex-col justify-end">
+            <p class="text-white text-xl font-bold italic mb-2">“Presence is trained, not inherited.”</p>
+            <p class="text-slate-400 text-sm">Leading a corporate session in Vietnam</p>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="order-1 md:order-2 space-y-8">
+        <div>
+          <h2 class="playfair text-5xl font-bold mb-6">The knight's Tale</h2>
+          <p class="text-slate-400 text-lg leading-relaxed">My journey hasn’t just been about teaching grammar — it’s been about understanding the human behind the language.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] mt-1">01</div>
+            <p class="text-slate-300">Founded <span class="text-white font-medium">knightSchool</span> to bridge the gap between academic English and professional authority.</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] mt-1">02</div>
+            <p class="text-slate-300">Specialize in <span class="text-white font-medium">IELTS & Cambridge</span> pathways for high-performing professionals.</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] mt-1">03</div>
+            <p class="text-slate-300">Developed the <span class="text-white font-medium">Psychology-Driven ESL</span> framework to reduce anxiety and boost fluency.</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] mt-1">04</div>
+            <p class="text-slate-300">Spent <span class="text-white font-medium">5+ years in Vietnam</span> leading IELTS departments and senior instructor teams.</p>
+          </div>
+        </div>
+        <div class="pt-8">
+          <a href="journey.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-indigo-500/10 text-indigo-400 font-bold hover:bg-indigo-500/20 transition group">
+            Experience the Cinematic Journey <span class="group-hover:translate-x-1 transition">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class=\"max-w-7xl mx-auto px-6 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-sm\">
-        <div>© 2026 knightSchool — Clyde Agnew. All rights reserved.</div>
-        <div class=\"flex gap-8\">
-            <a href=\"mailto:clyde.agnew@gmail.com\" class=\"hover:text-white transition\">Contact</a>
-            <a href=\"#\" class=\"hover:text-white transition\">LinkedIn</a>
-            <a href=\"#\" class=\"hover:text-white transition\">GitHub</a>
-        </div>
-    </footer>
+    <!-- Visual Timeline Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-24">
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400" class="rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5" alt="Foundations" />
+      <img src="https://images.unsplash.com/photo-1454165833767-02754a7c1b59?w=400" class="rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5" alt="Resilience" />
+      <img src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?w=400" class="rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5" alt="Impact" />
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400" class="rounded-2xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition duration-500 border border-white/5" alt="Present" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-sm">
+    <div>© 2026 knightSchool — Clyde Agnew. All rights reserved.</div>
+    <div class="flex gap-8">
+      <a href="mailto:clyde.agnew@gmail.com" class="hover:text-white transition">Contact</a>
+      <a href="https://linkedin.com/in/clydeagnew" target="_blank" class="hover:text-white transition">LinkedIn</a>
+      <a href="https://github.com/clydeagnew-max" target="_blank" class="hover:text-white transition">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
