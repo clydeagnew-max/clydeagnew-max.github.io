@@ -34,6 +34,7 @@
   });
 
   mobileButton?.addEventListener('click', () => {
+    if (!nav) return;
     const open = nav.classList.toggle('open');
     mobileButton.setAttribute('aria-expanded', String(open));
   });
@@ -44,30 +45,14 @@
   }));
 
   const modeCopy = {
-    ielts: {
-      topic: 'e.g. technology, work-life balance, public transport',
-      context: 'Optional: speaking part, writing task, target band, or focus area',
-      needsResponse: false
-    },
-    speaking: {
-      topic: 'e.g. job interview, presentation, explaining an opinion',
-      context: 'Tell the coach what the situation is and what you want to sound like',
-      needsResponse: true
-    },
-    workplace: {
-      topic: 'e.g. disagreeing politely with a manager',
-      context: 'Describe the workplace situation, relationship, and outcome you need',
-      needsResponse: true
-    },
-    lesson: {
-      topic: 'e.g. travel vocabulary, past simple, IELTS speaking',
-      context: 'Age, lesson length, interests, materials available, or learning goal',
-      needsResponse: false
-    }
+    ielts: { topic: 'e.g. technology, work-life balance, public transport', context: 'Optional: speaking part, writing task, target band, or focus area', needsResponse: false },
+    speaking: { topic: 'e.g. job interview, presentation, explaining an opinion', context: 'Tell the coach what the situation is and what you want to sound like', needsResponse: true },
+    workplace: { topic: 'e.g. disagreeing politely with a manager', context: 'Describe the workplace situation, relationship, and outcome you need', needsResponse: true },
+    lesson: { topic: 'e.g. travel vocabulary, past simple, IELTS speaking', context: 'Age, lesson length, interests, materials available, or learning goal', needsResponse: false }
   };
 
   function setMode(mode) {
-    if (!modeCopy[mode]) return;
+    if (!modeCopy[mode] || !modeSelect || !topicInput || !contextInput || !responseField || !responseInput) return;
     modeSelect.value = mode;
     topicInput.placeholder = modeCopy[mode].topic;
     contextInput.placeholder = modeCopy[mode].context;
@@ -80,7 +65,6 @@
     setMode(card.dataset.modeCard);
     document.querySelector('#studio')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }));
-
   modeSelect?.addEventListener('change', () => setMode(modeSelect.value));
 
   const params = new URLSearchParams(location.search);
@@ -89,17 +73,14 @@
   function getApiUrl() {
     const configured = window.KNIGHT_SCHOOL?.apiUrl?.trim();
     if (configured) return configured;
-    if (location.hostname.endsWith('vercel.app') || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-      return '/api/coach';
-    }
+    if (location.hostname.endsWith('vercel.app') || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return '/api/coach';
     return '';
   }
 
   function localDemo(payload) {
     const topic = payload.topic || 'your topic';
     const level = payload.level;
-    if (payload.mode === 'ielts') {
-      return `DEMO MODE — AI connection pending
+    if (payload.mode === 'ielts') return `DEMO MODE — AI connection pending
 
 IELTS mission for ${level}: ${topic}
 
@@ -109,71 +90,58 @@ PART 1
 • Is ${topic} important where you live?
 
 PART 2
-Describe an experience connected with ${topic}.
-You should say what happened, who was involved, why it mattered, and explain what you learned from it.
+Describe an experience connected with ${topic}. Explain what happened, who was involved, why it mattered, and what you learned.
 
 PART 3
 • How has ${topic} changed in recent years?
 • Who benefits most from developments in ${topic}?
 • What problems may arise in the future?
 
-Coach note: answer first for fluency, then repeat once for structure and precision.`;
-    }
-    if (payload.mode === 'speaking') {
-      return `DEMO MODE — AI connection pending
+Coach note: answer once for fluency, then repeat for structure and precision.`;
+    if (payload.mode === 'speaking') return `DEMO MODE — AI connection pending
 
 Speaking practice: ${topic}
 
-1. State your main point in one clear sentence.
+1. State your main point clearly.
 2. Add one specific example.
-3. Explain why that example matters.
-4. Finish with a short takeaway.
+3. Explain why it matters.
+4. Finish with a concise takeaway.
 
 Your draft:
-${payload.response || '(add your response)'}
-
-Coach note: when AI is connected, this lab will give personalised feedback on clarity, fluency, vocabulary and delivery.`;
-    }
-    if (payload.mode === 'workplace') {
-      return `DEMO MODE — AI connection pending
+${payload.response || '(add your response)'}`;
+    if (payload.mode === 'workplace') return `DEMO MODE — AI connection pending
 
 Workplace mission: ${topic}
 
-Use this structure:
 • Acknowledge the other person's point.
 • State your concern neutrally.
 • Give one concrete reason or example.
 • Suggest a practical next step.
-• Confirm the relationship remains collaborative.
-
-When AI is connected, Knight School will rewrite and explain your exact message for the situation you describe.`;
-    }
+• Keep the relationship collaborative.`;
     return `DEMO MODE — AI connection pending
 
 Lesson mission: ${topic} (${level})
 
-Warm-up: 5-minute low-pressure activation.
-Target: one measurable language outcome.
-Practice: guided model → controlled practice → real communication.
-Game: short points-based challenge using the target language.
-Exit task: learner produces the target independently.
-Teacher note: record one strength, one difficulty, and the next lesson move.
-
-When AI is connected, Lesson Studio will generate a complete personalised lesson from your context.`;
+Warm-up → clear target → model → guided practice → real communication → short game → exit task → next-step feedback.`;
   }
 
   async function copyOutput() {
-    const text = output.textContent.trim();
+    const text = output?.textContent.trim();
     if (!text) return;
-    await navigator.clipboard.writeText(text);
-    const original = copyButton.textContent;
-    copyButton.textContent = 'Copied ✓';
-    setTimeout(() => copyButton.textContent = original, 1500);
+    try {
+      await navigator.clipboard.writeText(text);
+      const original = copyButton.textContent;
+      copyButton.textContent = 'Copied ✓';
+      setTimeout(() => copyButton.textContent = original, 1500);
+    } catch {
+      status.textContent = 'Copy failed. Select the response and copy it manually.';
+    }
   }
   copyButton?.addEventListener('click', copyOutput);
 
   form?.addEventListener('submit', async event => {
     event.preventDefault();
+    if (!output || !status || !submitButton) return;
 
     const payload = {
       mode: modeSelect.value,
@@ -186,6 +154,7 @@ When AI is connected, Lesson Studio will generate a complete personalised lesson
     status.textContent = 'Building your Knight School response…';
     output.textContent = '';
     submitButton.disabled = true;
+    submitButton.setAttribute('aria-busy', 'true');
     submitButton.textContent = 'Thinking…';
 
     const apiUrl = getApiUrl();
@@ -193,15 +162,23 @@ When AI is connected, Lesson Studio will generate a complete personalised lesson
     try {
       if (!apiUrl) {
         output.textContent = localDemo(payload);
-        status.textContent = 'Demo mode is active. The secure AI endpoint is not connected on this domain yet.';
+        status.textContent = 'Demo mode is active on this domain.';
         return;
       }
 
-      const res = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30_000);
+      let res;
+      try {
+        res = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        });
+      } finally {
+        clearTimeout(timeout);
+      }
 
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'The AI coach could not complete this request.');
@@ -210,9 +187,12 @@ When AI is connected, Lesson Studio will generate a complete personalised lesson
       status.textContent = `AI response ready · ${data.model || 'Knight School AI'}`;
     } catch (error) {
       output.textContent = localDemo(payload);
-      status.textContent = `AI connection unavailable: ${error.message} A safe local practice version is shown instead.`;
+      status.textContent = error.name === 'AbortError'
+        ? 'The AI request took too long. A local practice version is shown instead.'
+        : `AI connection unavailable: ${error.message} A local practice version is shown instead.`;
     } finally {
       submitButton.disabled = false;
+      submitButton.removeAttribute('aria-busy');
       submitButton.textContent = 'Generate with AI';
     }
   });
