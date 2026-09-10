@@ -1,265 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Knight School with Clyde | Psychology-Driven ESL & IELTS Specialist</title>
-  <meta name="description" content="Knight School with Clyde — premium psychology-driven ESL coaching, IELTS strategy, and digital education products." />
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Knight's Tale | Clyde Agnew's Journey</title>
+  <meta name="description" content="A visual journey through the experiences, teaching practice and ideas that shaped Knight School with Clyde.">
+  <meta name="theme-color" content="#0a0f18">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #1A2533;
-      --bg-2: #111926;
-      --gold: #C8A24A;
-      --crimson: #8B1E28;
-      --cream: #F6F1E8;
-      --muted: rgba(246,241,232,.72);
-      --panel: rgba(255,255,255,0.04);
-      --line: rgba(200,162,74,0.16);
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(200,162,74,0.07), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(139,30,40,0.08), transparent 25%),
-        linear-gradient(180deg, #1A2533 0%, #111926 100%);
-      color: var(--cream);
-    }
-    h1, h2, h3, .brand-title { font-family: 'Montserrat', sans-serif; }
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 55px rgba(0,0,0,0.22);
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-    .panel:hover {
-      transform: translateY(-4px);
-      border-color: rgba(200,162,74,0.38);
-      box-shadow: 0 24px 70px rgba(0,0,0,0.28), 0 0 32px rgba(200,162,74,0.06);
-    }
-    .gold { color: var(--gold); }
-    .cream { color: var(--cream); }
-    .muted { color: var(--muted); }
-    .nav {
-      background: rgba(26,37,51,0.72);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(200,162,74,0.10);
-    }
-    .btn-gold {
-      background: var(--gold);
-      color: #1A2533;
-      border: 1px solid rgba(200,162,74,0.7);
-      box-shadow: 0 10px 30px rgba(200,162,74,0.18);
-      transition: transform .2s ease, filter .2s ease;
-    }
-    .btn-gold:hover { transform: translateY(-2px); filter: brightness(1.06); }
-    .btn-dark {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(200,162,74,0.25);
-      color: var(--cream);
-      transition: border-color .2s ease, background .2s ease, transform .2s ease;
-    }
-    .btn-dark:hover { border-color: rgba(200,162,74,0.48); transform: translateY(-2px); }
-    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(200,162,74,0.9), transparent); }
-    .eyebrow {
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      font-size: .72rem;
-      color: rgba(246,241,232,.78);
-    }
-    .glow-ring {
-      box-shadow: 0 0 0 1px rgba(200,162,74,0.22), 0 0 40px rgba(200,162,74,0.08);
-    }
+    :root{--bg:#f5f7f9;--surface:#fff;--surface2:#edf1f5;--text:#0c1420;--muted:#5f6c79;--line:#dbe2e9;--gold:#aa7c19;--shadow:0 22px 60px rgba(17,29,43,.11);--max:1180px}
+    [data-theme="dark"]{--bg:#0a0f18;--surface:#111925;--surface2:#172230;--text:#f4f7fb;--muted:#a9b5c2;--line:#263444;--gold:#d3ad56;--shadow:0 24px 70px rgba(0,0,0,.32)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.06;letter-spacing:-.035em;margin:0}.wrap{width:min(var(--max),calc(100% - 2rem));margin:auto}.muted{color:var(--muted)}.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}.header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px)}.navrow{height:74px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{display:flex;align-items:center;gap:.7rem;font-weight:700}.mark{width:40px;height:40px;border:1px solid var(--gold);border-radius:12px;display:grid;place-items:center;color:var(--gold);font-size:1.35rem}.nav{display:flex;gap:1.3rem;color:var(--muted);font-size:.92rem}.nav a:hover{color:var(--text)}.hero{padding:clamp(5rem,10vw,8rem) 0 4rem;border-bottom:1px solid var(--line)}.hero h1{font-size:clamp(3.4rem,8vw,7rem);max-width:900px}.hero p{max-width:700px;color:var(--muted);font-size:1.15rem}.btn{display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.05rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-weight:700;margin-top:1.25rem}.timeline{padding:4rem 0 6rem}.act{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2rem;align-items:center;padding:2rem 0;border-bottom:1px solid var(--line)}.act:nth-child(even) .visual{order:2}.visual{background:var(--surface);border:1px solid var(--line);padding:.65rem;border-radius:24px;box-shadow:var(--shadow)}.visual img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:18px}.copy{padding:1rem}.copy h2{font-size:clamp(2rem,4vw,3.4rem);margin:.35rem 0 .8rem}.copy p{color:var(--muted);max-width:600px}.act-no{font-family:"Space Grotesk";font-size:.9rem;color:var(--gold);font-weight:700}.duo{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.duo img{aspect-ratio:1/1;object-fit:cover}.closing{padding:4rem 0;background:var(--surface2);border-top:1px solid var(--line)}.closing-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}.closing h2{font-size:clamp(2.2rem,5vw,4rem)}footer{padding:2rem 0;color:var(--muted);font-size:.9rem}.footer-row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}@media(max-width:820px){.act{grid-template-columns:1fr}.act:nth-child(even) .visual{order:0}.nav{display:none}.closing-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(3rem,16vw,5rem)}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
   </style>
 </head>
-<body class="min-h-screen selection:bg-[#C8A24A]/30 selection:text-[#F6F1E8]">
-  <header class="nav sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
-      <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-2xl flex items-center justify-center bg-[rgba(200,162,74,0.12)] border border-[rgba(200,162,74,0.32)] text-[#C8A24A] font-black group-hover:scale-105 transition">K</div>
-        <div class="leading-tight">
-          <div class="brand-title text-lg font-extrabold cream">Knight School</div>
-          <div class="text-xs muted">with Clyde</div>
-        </div>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm muted">
-        <a href="#about" class="hover:text-[#F6F1E8] transition">About</a>
-        <a href="#labs" class="hover:text-[#F6F1E8] transition">Labs</a>
-        <a href="#journey" class="hover:text-[#F6F1E8] transition">Journey</a>
-        <a href="#contact" class="text-[#C8A24A] font-semibold hover:opacity-90 transition">Contact</a>
-      </nav>
-    </div>
-  </header>
+<body>
+<header class="header"><div class="wrap navrow">
+  <a class="brand" href="/"><span class="mark">♞</span><span>Knight School <small class="muted">with Clyde</small></span></a>
+  <nav class="nav" aria-label="Primary"><a href="/">Home</a><a href="/#labs">Labs</a><a href="/#studio">AI Studio</a><a href="/#contact">Contact</a></nav>
+</div></header>
 
-  <main id="home">
-    <section class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        <div>
-          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[rgba(200,162,74,0.18)] bg-[rgba(200,162,74,0.06)] mb-8">
-            <span class="w-2 h-2 rounded-full bg-[#C8A24A]"></span>
-            <span class="eyebrow">Where psychology meets performance</span>
-          </div>
-          <h1 class="brand-title text-5xl md:text-7xl font-black leading-[1.02] text-[#F6F1E8] max-w-xl">
-            Speak with <span class="gold">authority</span>.
-            Build with <span class="gold">strategy</span>.
-          </h1>
-          <div class="divider w-44 my-8"></div>
-          <p class="text-[rgba(246,241,232,.78)] text-lg md:text-xl leading-relaxed max-w-xl">
-            Knight School with Clyde is a premium ESL, IELTS, and digital learning brand designed to help ambitious professionals unlock confidence, clarity, and measurable progress.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 mt-10">
-            <a href="#labs" class="btn-gold px-7 py-4 rounded-2xl font-bold text-sm text-center">Explore the Labs</a>
-            <a href="#journey" class="btn-dark px-7 py-4 rounded-2xl font-bold text-sm text-center">View the Journey</a>
-          </div>
-          <div class="grid grid-cols-3 gap-4 mt-12 max-w-xl">
-            <div class="panel rounded-3xl p-4">
-              <div class="text-2xl font-black gold">10+</div>
-              <div class="text-xs uppercase tracking-[0.24em] muted mt-2">Years</div>
-            </div>
-            <div class="panel rounded-3xl p-4">
-              <div class="text-2xl font-black cream">IELTS</div>
-              <div class="text-xs uppercase tracking-[0.24em] muted mt-2">Strategy</div>
-            </div>
-            <div class="panel rounded-3xl p-4">
-              <div class="text-2xl font-black cream">ESL</div>
-              <div class="text-xs uppercase tracking-[0.24em] muted mt-2">Confidence</div>
-            </div>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="absolute inset-0 -z-10 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(200,162,74,0.10),transparent_60%)] blur-3xl"></div>
-          <div class="panel rounded-[2.5rem] p-5 md:p-6 glow-ring">
-            <div class="rounded-[2rem] overflow-hidden bg-[#0F1723] border border-[rgba(200,162,74,0.12)] aspect-square flex items-center justify-center relative">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(200,162,74,0.08),transparent_35%)]"></div>
-              <div class="text-center px-8 relative z-10">
-                <div class="mx-auto w-28 h-28 md:w-36 md:h-36 rounded-[2rem] flex items-center justify-center border border-[rgba(200,162,74,0.30)] bg-[rgba(200,162,74,0.08)] mb-6">
-                  <div class="text-[#C8A24A] text-7xl md:text-8xl font-black">♞</div>
-                </div>
-                <div class="brand-title text-2xl md:text-4xl font-black text-[#F6F1E8]">Knight School</div>
-                <div class="mt-3 text-[#F6F1E8]/70 uppercase tracking-[0.28em] text-[11px] md:text-xs">Moves with Meaning</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<main>
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">The Knight's Tale</div>
+  <h1>A career shaped by <span style="color:var(--gold)">learning, performance and teaching.</span></h1>
+  <p>This is the visual story behind Knight School: not a second homepage, but the experiences and ideas that gradually converged into a practical approach to English education and learning technology.</p>
+  <a class="btn" href="/">← Back to Knight School</a>
+</div></section>
 
-    <section id="about" class="max-w-7xl mx-auto px-6 pb-20">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="panel rounded-[2rem] p-8 lg:col-span-2">
-          <div class="eyebrow mb-4">How I teach</div>
-          <h2 class="brand-title text-3xl md:text-4xl font-bold text-[#F6F1E8] mb-4">Communication that works under pressure.</h2>
-          <p class="muted leading-relaxed max-w-3xl">
-            Knight School combines practical language coaching with an understanding of confidence, context, and the social meaning behind communication. The goal is not simply better English — it is helping learners know what to say, how to say it, and why it works.
-          </p>
-          <div class="grid md:grid-cols-3 gap-4 mt-8">
-            <div class="rounded-2xl border border-[rgba(200,162,74,0.14)] bg-[rgba(255,255,255,0.03)] p-5">
-              <div class="gold font-bold">Diagnose</div>
-              <p class="text-sm muted mt-2">Find the real barrier: language knowledge, confidence, fluency, structure, or communication strategy.</p>
-            </div>
-            <div class="rounded-2xl border border-[rgba(200,162,74,0.14)] bg-[rgba(255,255,255,0.03)] p-5">
-              <div class="gold font-bold">Practise</div>
-              <p class="text-sm muted mt-2">Train with realistic situations, useful feedback, and language the learner can actually use.</p>
-            </div>
-            <div class="rounded-2xl border border-[rgba(200,162,74,0.14)] bg-[rgba(255,255,255,0.03)] p-5">
-              <div class="gold font-bold">Transfer</div>
-              <p class="text-sm muted mt-2">Turn the lesson into a repeatable strategy for exams, meetings, interviews, and everyday work.</p>
-            </div>
-          </div>
-        </div>
-        <aside class="panel rounded-[2rem] p-8">
-          <div class="eyebrow mb-4">Knight School approach</div>
-          <div class="space-y-5">
-            <div>
-              <div class="cream font-semibold">IELTS & exam strategy</div>
-              <p class="text-sm muted mt-1">Structured preparation for fluency, coherence, vocabulary, and confident test performance.</p>
-            </div>
-            <div>
-              <div class="cream font-semibold">Business English</div>
-              <p class="text-sm muted mt-1">Meetings, interviews, presentations, professional tone, and real workplace situations.</p>
-            </div>
-            <div>
-              <div class="cream font-semibold">Personalised learning</div>
-              <p class="text-sm muted mt-1">Lessons adapted to the learner’s level, goals, interests, and communication challenges.</p>
-            </div>
-            <div>
-              <div class="cream font-semibold">Human + AI practice</div>
-              <p class="text-sm muted mt-1">Technology supports practice and feedback; the learner’s voice and real communication remain central.</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+<section class="timeline"><div class="wrap">
+  <article class="act" id="foundations">
+    <div class="visual"><img src="act1-early-foundations%20(2).png" alt="Early foundations chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT I</div><h2>Early foundations</h2><p>The starting point: curiosity about people, communication and the systems that shape how we learn, work and relate to one another.</p></div>
+  </article>
+  <article class="act" id="systems">
+    <div class="visual"><img src="act2-corporate-systems..png" alt="Corporate systems chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT II</div><h2>Learning how systems work</h2><p>Professional environments added another layer: structure, expectations, performance, communication and the difference between knowing something and making it work in practice.</p></div>
+  </article>
+  <article class="act" id="performance">
+    <div class="visual duo"><img src="act3-pantomime-card.png" alt="Performance chapter card" loading="lazy"><img src="act3-pantomime-ringmaster.png" alt="Performance chapter ringmaster" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT III</div><h2>Performance and presence</h2><p>Communication is also performance: timing, confidence, audience awareness and the ability to stay present when attention is on you. Those ideas later became highly relevant to speaking instruction.</p></div>
+  </article>
+  <article class="act" id="resilience">
+    <div class="visual"><img src="act4-academic-resilience.png" alt="Academic resilience chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT IV</div><h2>Resilience as a learning skill</h2><p>Progress is rarely linear. Learning to recover, adapt and continue became part of the philosophy that now informs how Knight School approaches confidence and learner independence.</p></div>
+  </article>
+  <article class="act" id="educator">
+    <div class="visual"><img src="act5-finding-educator.png" alt="Finding the educator chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT V</div><h2>Finding the educator</h2><p>Teaching brought the previous threads together: people, systems, performance and resilience. The classroom became a place to test which explanations and activities genuinely helped learners move forward.</p></div>
+  </article>
+  <article class="act" id="vietnam">
+    <div class="visual"><img src="act6-vietnam-classroom.png" alt="Vietnam classroom chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT VI</div><h2>The international classroom</h2><p>Teaching abroad made communication differences visible in real time. Language learning became inseparable from context, confidence, culture and the practical demands learners face outside a textbook.</p></div>
+  </article>
+  <article class="act" id="pedagogy">
+    <div class="visual"><img src="act7-advanced-pedagogy.jpg.png" alt="Advanced pedagogy chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">ACT VII</div><h2>From lessons to pedagogy</h2><p>The focus deepened from delivering content to designing learning: diagnosis, deliberate practice, feedback, engagement and giving the learner a strategy they can reuse independently.</p></div>
+  </article>
+  <article class="act" id="impact">
+    <div class="visual"><img src="act7-real-world-impact.png" alt="Real-world impact chapter" loading="lazy"></div>
+    <div class="copy"><div class="act-no">NOW</div><h2>From teaching to building</h2><p>Knight School extends those ideas into digital tools, AI-assisted practice and reusable learning systems — while keeping the human communication problem at the centre.</p></div>
+  </article>
+</div></section>
 
-    <section id="labs" class="max-w-7xl mx-auto px-6 pb-20">
-      <div class="flex items-end justify-between gap-6 mb-8">
-        <div>
-          <div class="eyebrow mb-3">Digital products</div>
-          <h2 class="brand-title text-3xl md:text-4xl font-bold text-[#F6F1E8]">The innovation lab</h2>
-        </div>
-        <div class="hidden md:block text-sm gold font-semibold">Built for learners, teachers, and future clients</div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="#" class="panel rounded-[2rem] p-7 md:col-span-2">
-          <div class="text-[#C8A24A] text-3xl mb-4">⚡</div>
-          <h3 class="brand-title text-2xl font-bold mb-3 text-[#F6F1E8]">IELTS Question Generator</h3>
-          <p class="muted leading-relaxed max-w-2xl">Generate high-probability speaking and writing prompts based on topic, level, and exam style.</p>
-        </a>
-        <a href="#" class="panel rounded-[2rem] p-7">
-          <div class="text-[#8B1E28] text-3xl mb-4">🖋️</div>
-          <h3 class="brand-title text-2xl font-bold mb-3 text-[#F6F1E8]">Script Builder</h3>
-          <p class="muted leading-relaxed text-sm">Create personalised response scripts for structured practice.</p>
-        </a>
-        <div class="panel rounded-[2rem] p-7">
-          <div class="text-4xl font-black gold">10+</div>
-          <div class="text-xs uppercase tracking-[0.24em] muted mt-2">Years of impact</div>
-          <p class="muted text-sm leading-relaxed mt-5">International teaching experience, coaching, and classroom leadership.</p>
-        </div>
-        <div class="panel rounded-[2rem] p-7 md:col-span-2 flex flex-col md:flex-row items-center gap-6">
-          <div class="w-24 h-24 rounded-full border border-[rgba(200,162,74,0.25)] bg-[rgba(200,162,74,0.08)] flex items-center justify-center text-[#C8A24A] text-4xl font-black">C</div>
-          <div>
-            <h3 class="brand-title text-2xl font-bold mb-2 text-[#F6F1E8]">The human element</h3>
-            <p class="muted leading-relaxed">Your teaching philosophy focuses on lowering anxiety, building structure, and helping learners speak with real authority.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="journey" class="max-w-7xl mx-auto px-6 pb-20">
-      <div class="panel rounded-[2.2rem] p-8 md:p-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <div class="eyebrow mb-3">Journey</div>
-            <h2 class="brand-title text-3xl md:text-5xl font-black text-[#F6F1E8] mb-6">The Knight’s Tale</h2>
-            <p class="muted leading-relaxed mb-6">The story behind the brand is one of strategy, teaching, and carefully designed transformation. This section is where your career narrative becomes a premium, cinematic story.</p>
-            <div class="space-y-4">
-              <div class="flex gap-4"><div class="w-7 h-7 rounded-full bg-[rgba(200,162,74,0.14)] border border-[rgba(200,162,74,0.24)] flex items-center justify-center text-[#C8A24A] text-xs font-bold">01</div><p class="muted">Psychology-first approach to teaching and confidence building.</p></div>
-              <div class="flex gap-4"><div class="w-7 h-7 rounded-full bg-[rgba(200,162,74,0.14)] border border-[rgba(200,162,74,0.24)] flex items-center justify-center text-[#C8A24A] text-xs font-bold">02</div><p class="muted">International teaching experience across ESL and IELTS contexts.</p></div>
-              <div class="flex gap-4"><div class="w-7 h-7 rounded-full bg-[rgba(200,162,74,0.14)] border border-[rgba(200,162,74,0.24)] flex items-center justify-center text-[#C8A24A] text-xs font-bold">03</div><p class="muted">Digital products designed to extend your teaching impact.</p></div>
-            </div>
-          </div>
-          <div class="rounded-[2rem] border border-[rgba(200,162,74,0.16)] bg-[rgba(255,255,255,0.03)] p-8">
-            <div class="text-[#C8A24A] text-sm uppercase tracking-[0.28em] mb-4">Brand vision</div>
-            <p class="text-lg leading-relaxed text-[#F6F1E8]/85">A premium educator brand with room to scale into apps, learning tools, coaching products, and a polished public identity.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="max-w-7xl mx-auto px-6 pb-24">
-      <div class="panel rounded-[2.2rem] p-8 md:p-12 text-center">
-        <div class="eyebrow mb-4">Contact</div>
-        <h2 class="brand-title text-3xl md:text-5xl font-black text-[#F6F1E8]">Ready for the next phase</h2>
-        <p class="muted max-w-2xl mx-auto mt-5 leading-relaxed">The portfolio is now styled to match your Knight School branding system and can be used as the foundation for your teaching, app development, and brand presence.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <a href="mailto:clyde.agnew@gmail.com" class="btn-gold px-7 py-4 rounded-2xl font-bold text-sm">Email Clyde</a>
-          <a href="https://github.com/clydeagnew-max" target="_blank" rel="noopener noreferrer" class="btn-dark px-7 py-4 rounded-2xl font-bold text-sm">View GitHub</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<section class="closing"><div class="wrap closing-grid">
+  <div><div class="eyebrow">The next chapter</div><h2>The story becomes a platform.</h2><p class="muted">Explore the learning labs, try the AI Studio, or start a conversation about English coaching and education projects.</p></div>
+  <a class="btn" href="/#studio">Open AI Studio →</a>
+</div></section>
+</main>
+<footer><div class="wrap footer-row"><span>© 2026 Knight School with Clyde</span><span><a href="/">Home</a> · <a href="/#contact">Contact</a></span></div></footer>
 </body>
 </html>
