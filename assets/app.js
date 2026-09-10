@@ -58,6 +58,7 @@
     contextInput.placeholder = modeCopy[mode].context;
     responseField.hidden = !modeCopy[mode].needsResponse;
     responseInput.required = modeCopy[mode].needsResponse;
+    responseInput.disabled = !modeCopy[mode].needsResponse;
     modeCards.forEach(card => card.classList.toggle('active', card.dataset.modeCard === mode));
   }
 
@@ -125,8 +126,58 @@ Lesson mission: ${topic} (${level})
 Warm-up → clear target → model → guided practice → real communication → short game → exit task → next-step feedback.`;
   }
 
+  // Only create allowlisted elements; model/user text is never parsed as HTML.
+  function appendInline(parent, text) {
+    const tokens = /(\*\*([^*\n]+)\*\*|__([^_\n]+)__|\*([^*\n]+)\*|_([^_\n]+)_|`([^`\n]+)`)/g;
+    let offset = 0;
+    for (const match of text.matchAll(tokens)) {
+      parent.append(document.createTextNode(text.slice(offset, match.index)));
+      const element = document.createElement(match[2] || match[3] ? 'strong' : match[6] ? 'code' : 'em');
+      element.textContent = match[2] || match[3] || match[4] || match[5] || match[6];
+      parent.append(element);
+      offset = match.index + match[0].length;
+    }
+    parent.append(document.createTextNode(text.slice(offset)));
+  }
+
+  let outputSource = output?.textContent || '';
+  function renderOutput(text) {
+    outputSource = typeof text === 'string' ? text : 'No response was returned.';
+    const fragment = document.createDocumentFragment();
+    let paragraph = null;
+    let list = null;
+    for (const line of outputSource.replace(/\r\n?/g, '\n').split('\n')) {
+      if (!line.trim()) { paragraph = null; list = null; continue; }
+      const heading = line.match(/^ {0,3}(#{1,6})\s+(.+?)(?:\s+#+)?\s*$/);
+      const item = line.match(/^\s*(?:([-+*•])|([0-9]+)[.)])\s+(.+)$/);
+      if (heading) {
+        paragraph = null; list = null;
+        const element = document.createElement('h' + Math.min(6, heading[1].length + 2));
+        appendInline(element, heading[2]);
+        fragment.append(element);
+      } else if (item) {
+        paragraph = null;
+        const tag = item[2] ? 'OL' : 'UL';
+        if (!list || list.tagName !== tag) {
+          list = document.createElement(tag.toLowerCase());
+          if (item[2]) list.start = Number(item[2]);
+          fragment.append(list);
+        }
+        const element = document.createElement('li');
+        appendInline(element, item[3]);
+        list.append(element);
+      } else {
+        list = null;
+        if (!paragraph) { paragraph = document.createElement('p'); fragment.append(paragraph); }
+        else paragraph.append(document.createTextNode('\n'));
+        appendInline(paragraph, line);
+      }
+    }
+    output.replaceChildren(fragment);
+  }
+
   async function copyOutput() {
-    const text = output?.textContent.trim();
+    const text = outputSource.trim();
     if (!text) return;
     try {
       await navigator.clipboard.writeText(text);
@@ -148,11 +199,11 @@ Warm-up → clear target → model → guided practice → real communication �
       level: levelSelect.value,
       topic: topicInput.value.trim(),
       context: contextInput.value.trim(),
-      response: responseInput.value.trim()
+      response: responseInput.disabled ? '' : responseInput.value.trim()
     };
 
     status.textContent = 'Building your Knight School response…';
-    output.textContent = '';
+    renderOutput('');
     submitButton.disabled = true;
     submitButton.setAttribute('aria-busy', 'true');
     submitButton.textContent = 'Thinking…';
@@ -161,7 +212,7 @@ Warm-up → clear target → model → guided practice → real communication �
 
     try {
       if (!apiUrl) {
-        output.textContent = localDemo(payload);
+        renderOutput(localDemo(payload));
         status.textContent = 'Demo mode is active on this domain.';
         return;
       }
@@ -183,10 +234,10 @@ Warm-up → clear target → model → guided practice → real communication �
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'The AI coach could not complete this request.');
 
-      output.textContent = data.text || 'No response was returned.';
+      renderOutput(data.text || 'No response was returned.');
       status.textContent = `AI response ready · ${data.model || 'Knight School AI'}`;
     } catch (error) {
-      output.textContent = localDemo(payload);
+      renderOutput(localDemo(payload));
       status.textContent = error.name === 'AbortError'
         ? 'The AI request took too long. A local practice version is shown instead.'
         : `AI connection unavailable: ${error.message} A local practice version is shown instead.`;
